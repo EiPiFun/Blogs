@@ -1,0 +1,6 @@
+sudo grub-mkconfig -o /boot/grub2/grub.cf
+
+# Maybe it was in EFI
+
+sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+

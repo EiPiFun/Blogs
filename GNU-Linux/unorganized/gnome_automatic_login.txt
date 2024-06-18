@@ -1,0 +1,8 @@
+# GNOME automatic login
+
+sudo vi /etc/gdm(3)/custom.conf (or, daemon.conf)
+
+# [daemon]
+# AutomaticLoginEnable=True
+# AutomaticLogin=$username
+

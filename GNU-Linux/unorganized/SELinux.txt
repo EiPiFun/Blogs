@@ -1,0 +1,8 @@
+# Set SELinux permanently
+sudo vi /etc/selinux/config
+# SELINUX=enforcing/permissive/disabled
+# Check SELinux status
+sudo sestatus
+sudo getenforce
+# Set SELinux temporarily
+sudo setenforce 0/1

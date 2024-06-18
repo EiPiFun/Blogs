@@ -1,0 +1,64 @@
+# Enable NetworkManager if needed
+
+sudo vi /etc/NetworkManager/NetworkManager.conf
+
+sudo systemctl restart NetworkManager
+
+# managed=true
+
+# Check and configure, wifi plugin may miss
+
+systemctl status NetworkManager
+
+nmcli
+
+nmcli device status
+
+nmcli radio wifi
+
+nmcli radio wifi on
+
+nmcli device wifi list
+
+nmcli device wifi connect * password *
+
+nmcli device wifi connect * --ask
+
+# Connection profile
+
+nmcli connection
+nmcli connection up
+nmcli connection down
+nmcli connection add
+nmcli connection modify
+nmcli connection edit
+nmcli connection delete
+
+# if hidden
+
+nmcli connection add type wifi con-name * ifname * ssid *
+
+nmcli connection modify * wifi-sec.key-mgmt wpa-psk
+
+nmcli connection modify * wifi-sec.psk *
+
+nmcli connection up *
+
+nmcli connection up --ask
+
+# if 802.1x
+
+nmcli connection add \
+ type wifi con-name "MySSID" ifname wlp3s0 ssid "MySSID" -- \
+ wifi-sec.key-mgmt wpa-eap 802-1x.eap tls 802-1x.identity "USERNAME" \
+ 802-1x.ca-cert ~/ca.pem 802-1x.client-cert ~/cert.pem \
+ 802-1x.private-key-password "..." 802-1x.private-key ~/key.pem
+ 
+nmcli connection add \
+ type wifi con-name "MySSID" ifname wlp3s0 ssid "MySSID" -- \
+ wifi-sec.key-mgmt wpa-eap 802-1x.eap ttls \
+ 802-1x.phase2-auth mschapv2 802-1x.identity "USERNAME"
+ 
+ nmcli connection
+ nmcli connection up *
+ nmcli connection up * --ask

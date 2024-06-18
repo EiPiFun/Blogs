@@ -1,0 +1,4 @@
+cat /sys/class/backlight/*_backlight/max_brightness
+
+sudo nano /sys/class/backlight/*_backlight/brightness
+

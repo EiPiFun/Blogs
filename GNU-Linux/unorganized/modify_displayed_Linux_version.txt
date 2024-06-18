@@ -1,0 +1,2 @@
+sudo vi /etc/lsb-release
+sudo vi /etc/os-release

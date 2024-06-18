@@ -1,0 +1,13 @@
+# Check multipath device
+
+sudo multipath -l
+
+# Disable multipath for devices by wwid
+
+sudo vi /etc/multipath.conf
+
+# blacklist{
+#     wwid *
+#     wwid *
+# }
+

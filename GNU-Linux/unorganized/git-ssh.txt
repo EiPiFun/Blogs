@@ -1,0 +1,30 @@
+git config --global user.name *
+git config --glbbal user.email *
+
+ssh -T git@github.com
+
+git init
+
+git remote add origin git@github.com:*/*.git
+
+git clone git@github.com:*/*.git
+
+git branch -r
+
+git branch
+
+git branch $new_local_branch
+
+git checkout
+
+git checkout -b *
+
+git pull origin $remote_branch:$local_branch
+
+git commit -a
+
+git push origin *
+
+git log
+
+

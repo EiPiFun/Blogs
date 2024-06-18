@@ -1,0 +1,19 @@
+# Dependency
+
+ncurses-compat-libs/libncurses5
+
+# Edit
+
+sudo nano /usr/local/sunlogin/scripts/common.sh
+
+# os_name=centos
+# os_name=ubuntu
+# os_version=9
+# os_version=22.04
+
+sudo bash /usr/local/sunlogin/rpminstall.sh
+# Reinstall rpm or deb
+
+sudo systemctl restart runsunloginclient
+
+sudo /usr/local/sunlogin/bin/sunloginclient

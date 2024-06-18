@@ -1,0 +1,19 @@
+# Check time and date
+
+date
+uptime
+timedatectl
+timedatectl status
+
+# Configure
+
+sudo timedatectl list-timezones
+sudo timedatectl set-timezone Asia/Shanghai
+
+sudo timedatectl set-ntp true
+sudo timedatectl show-timesync
+
+sudo timedatectl set-local-rtc true --adjust-system-clock
+sudo timedatectl set-local-rtc false --adjust-system-clock
+
+

@@ -1,0 +1,15 @@
+sudo dnf install python39 python39-devel
+sudo dnf install cairo cairo-devel cairo-gobject-devel
+sudo dnf install gobject-introspection-devel
+sudo pip3 install wheel
+sudo pip3 install homekit pygobject
+
+sudo dnf install ibus-gtk3
+
+# Configure ibus
+
+ibus-setup
+
+sudo vi ~/.bash_profile
+
+# ibus-daemon --daemonize --replace --xim --restart

@@ -1,0 +1,22 @@
+# For .bash_profile
+
+cuda_path=/usr/local/cuda/bin/
+cuda_lib_path=/usr/local/cuda/lib64/
+cuda_include_path=/usr/local/cuda/include/
+
+pkg_config_path=/usr/local/lib/pkgconfig/
+
+PATH=$cuda_path:$PATH
+LD_LIBRARY_PATH=$cuda_lib_path:$LD_LIBRARY_PATH
+LIBRARY_PATH=$cuda_lib_path:$LIBRARY_PATH
+
+PKG_CONFIG_PATH=$pkg_config_path:$PKG_CONFIG_PATH
+
+export PATH
+export LD_LIBRARY_PATH
+export LIBRARY_PATH
+export PKG_CONFIG_PATH
+
+# Additions for GNU ld if needed
+
+for i in c icc idei if ig; do sudo ln -s /usr/local/cuda/lib64/libnpp$i.so /usr/local/lib/libnpp$i.so;done

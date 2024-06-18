@@ -1,0 +1,2 @@
+deb: /opt/qqmusic/qqmusic --no-sandbox
+appimage: …/qqmusic-*.appimage --no-sandbox

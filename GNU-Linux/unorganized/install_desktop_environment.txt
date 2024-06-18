@@ -1,0 +1,8 @@
+sudo dnf group list
+sudo dnf group install gnome-desktop
+
+sudo zypper search patterns-*
+sudo zypper install --no-recommends patterns-gnome-gnome
+
+sudo tasksel --list-tasks
+sudo tasksel install gnome-desktop

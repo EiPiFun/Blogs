@@ -1,0 +1,12 @@
+for i in gfortran;do
+ln -s /usr/bin/gfortran-11 /homex/home1/public/software/gcc-11-link/bin/$i -f
+done
+
+for i in gcc cc;do
+ln -s /usr/bin/gcc-11 /homex/home1/public/software/gcc-11-link/bin/$i -f
+done
+
+for i in g++ c++ cpp;do
+ln -s /usr/bin/g++-11 /homex/home1/public/software/gcc-11-link/bin/$i -f
+done
+

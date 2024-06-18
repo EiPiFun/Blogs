@@ -1,0 +1,14 @@
+# Add to sudo group
+
+sudo usermod -a -G sudo $username
+
+# Reboot
+
+# Alternatively, modify sudoers using root
+
+vi /etc/sudoers
+
+# eipifun ALL=(ALL:ALL) ALL
+# %sudo   ALL=(ALL:ALL) ALL
+
+

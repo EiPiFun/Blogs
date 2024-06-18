@@ -1,0 +1,4 @@
+sudo vi /etc/sysconfig/displaymanager
+
+# DISPLAYMANAGER_AUTOLOGIN=""
+

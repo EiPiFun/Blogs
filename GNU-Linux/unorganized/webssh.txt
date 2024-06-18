@@ -1,0 +1,11 @@
+# Install webssh
+pip install webssh
+
+# Add port for firewall
+sudo firewall-cmd --zone=public --permanent --add-port=*/tcp
+
+# Reload firewall configuration
+sudo firewall-cmd --reload
+
+# Start webssh
+wssh --port=* --sslport=* --xheaders=false --fbidhttp=false

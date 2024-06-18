@@ -1,0 +1,13 @@
+sudo vi /etc/environment
+
+INPUT_METHOD=fcitx|ibus
+GTK_IM_MODULE=fcitx|ibus
+QT_IM_MODULE=fcitx|ibus
+XMODIFIERS=@im=fcitx|ibus
+
+vi ~/.bash_profile
+
+export INPUT_METHOD=fcitx|ibus
+export GTK_IM_MODULE=fcitx|ibus
+export QT_IM_MODULE=fcitx|ibus
+export XMODIFIERS=@im=fcitx|ibus

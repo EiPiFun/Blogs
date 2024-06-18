@@ -1,0 +1,4 @@
+# Set dns server
+
+sudo resolvectl status wlp0s20f3 223.6.6.6
+

@@ -1,0 +1,24 @@
+sudo nano  /etc/systemd/system/myservice.service
+# or /usr/lib/systemd/system/myservice.service
+
+# Set "After=network-online.target" for network service
+
+# [Unit]
+# Description=myservice
+# After=sysinit.target
+#
+# [Service]
+# Type=simple
+# ExecStart=/workspace/scripts/myservice-service.sh start
+# ExecReload=/workspace/scripts/myservice-service.sh restart
+# ExecStop=/workspace/scripts/myservice-service.sh stop
+#
+# [Install]
+# WantedBy=multi-user.target
+
+
+sudo chmod a+x /workspace/scripts/myservice-service.sh
+
+sudo semanage fcontext -a -t bin_t /workspace/scripts/myservice-service.sh
+
+sudo restorecon -rvF /workspace/scripts/myservice-service.sh
