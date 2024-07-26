@@ -1,0 +1,43 @@
+# Require a patched Chromium, Google Chrome may not work, vaapi adapter may not work
+# Chromium in Fedora/RHEL, openSUSE and Debian seems to be patched
+# Google Chrome version 125 works with --enable-features
+
+# For Fedora:
+# Remove libva-intel-media-driver
+# Install intel-media-driver from rpmfusion to support h264 and hevc
+
+# For RHEL:
+# Add rpmfusion first
+
+# For openSUSE:
+# Install codecs from packman first
+# Or try Google Chrome
+
+# For Debian:
+# Remove intel-media-va-driver
+# Install intel-media-va-driver-non-free
+
+# For Ubuntu:
+# Do not install Chromium (snap), try Google Chrome
+
+# environment variables
+ 
+export LIBVA_DRIVER_NAME=iHD
+export LIBVA_DRIVER_NAME=i965
+
+# enable features
+# auto
+
+chromium --ozone-platform-hint=auto --enable-features=VaapiVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,VaapiVideoDecodeLinuxGL
+
+# explicit
+
+chromium --ozone-platform=wayland --enable-features=VaapiVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,VaapiVideoDecodeLinuxGL
+chromium --ozone-platform=x11 --enable-features=VaapiVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,VaapiVideoDecodeLinuxGL
+
+# Debug
+
+chrome://gpu
+chrome://media-internals
+
+
