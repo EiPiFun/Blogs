@@ -1,0 +1,13 @@
+# Create links for nvidia driver from cuda repository
+
+cd /usr/lib/xorg/modules/extensions/
+
+sudo ln -s libglxserver_nvidia.so.*.*.* libglxserver_nvidia.so --force
+
+cd /usr/lib/x86_64-linux-gnu/vdpau/
+
+sudo ln -s libvdpau_nvidia.so.*.*.* libvdpau_nvidia.so --force
+
+sudo ln -s libvdpau_nvidia.so.*.*.* libvdpau_nvidia.so.1 --force
+
+

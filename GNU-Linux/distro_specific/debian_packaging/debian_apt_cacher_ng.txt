@@ -1,0 +1,49 @@
+# apt-cacher-ng does not seem to support https
+# Change to http in /etc/apt/sources.list
+# Anyway, packages are protected by gpg keys
+
+# Install
+
+sudo apt install apt-cacher-ng
+
+# To configure (default port 3142)
+# sudo nano /etc/apt-cacher-ng/acng.conf
+
+# Start
+
+sudo systemctl enable apt-cacher-ng
+sudo systemctl start apt-cacher-ng
+
+# Check port
+
+ss -tnlp | grep 3142
+
+# Report Page
+
+http://127.0.0.1:3142/acng-report.html
+
+# Edit sources.list
+
+sudo vi /etc/apt/sources.list
+
+```
+deb http://127.0.0.1:3142/ftp.debian.org/debian stable main contrib non-free non-free-firmware
+deb-src http://127.0.0.1:3142/ftp.debian.org/debian stable main contrib non-free non-free-firmware
+```
+
+# Or, add proxy (alternative method)
+
+sudo vi /etc/apt/apt.conf.d/99aptcacherng
+
+# Configure apt, localhost as an example
+
+```
+Acquire::http::proxy "http://127.0.0.1:3142/";
+Acquire::ftp::proxy "ftp://127.0.0.1:3142/";
+```
+
+# Test
+
+sudo apt update
+
+

@@ -1,0 +1,51 @@
+#### All paths, version number may be different.
+
+# Dependencies
+
+RedHat|SUSE|Debian
+
+cmake
+cuda
+fftw-devel/fftw3-devel/libfftw3-dev
+gcc
+gcc-c++/g++
+gcc-gfortran/gcc-fortran/gfortran
+openmpi-devel/openmpi4-dev/libopenmpi-dev
+
+# RedHat only
+module load mpi
+
+# May need to add path for cmake, cuda, fftw, gcc, openmpi, and installed gromacs
+
+vi ~/.bash_profile
+
+***
+export PATH
+export LD_LIBRARY_PATH
+export CPATH
+export PKG_CONFIG_PATH
+
+# Apply path modifications
+
+source ~/.bash_profile
+
+# Extract:
+
+tar -xf ./gromacs-*.tar.gz
+cd ./gromacs-*
+mkdir ./build && cd ./build
+
+# use 'cd .. && rm -r ./build && mkdir ./build && cd ./build' to clean and recreate ./build
+# COMPILER and FFTW3 may need be specified; GMX_CUDA_TARGET_SM relies on hardware and driver.
+
+cmake -DGMX_MPI=off -DGMX_THREAD_MPI=on -DGMX_OPENMP=on -DGMX_FFT_LIBRARY=fftw3 -DGMX_EXTERNAL_BLAS=off -DGMX_EXTERNAL_LAPACK=off -DGMX_SIMD=AVX2_256 -DGMX_GPU=cuda -DGMX_CUDA_TARGET_SM="*;*" -DCMAKE_INSTALL_PREFIX=$HOME/software/gromacs/ -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DGMX_PYTHON_PACKAGE=off -DPython3_EXECUTABLE=/python3 ..
+
+# Or double precision (CUDA acceleration is not available in double precision)
+
+cmake -DGMX_MPI=off -DGMX_THREAD_MPI=on -DGMX_OPENMP=on -DGMX_FFT_LIBRARY=fftw3 -DGMX_EXTERNAL_BLAS=off -DGMX_EXTERNAL_LAPACK=off -DGMX_SIMD=AVX2_256 -DGMX_DOUBLE=on -DCMAKE_INSTALL_PREFIX=$HOME/software/gromacs/ -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DGMX_PYTHON_PACKAGE=off -DPython3_EXECUTABLE=/python3 ..
+
+# Make
+
+make install -j
+
+

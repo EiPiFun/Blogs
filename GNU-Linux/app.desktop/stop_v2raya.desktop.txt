@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=stop v2raya
+Exec=/usr/bin/sh /home/eipifun/Documents/docker/stop_v2raya.sh
+Terminal=true

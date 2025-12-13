@@ -1,0 +1,23 @@
+# SELinux is not suitable for graphical usage
+# Known issues: need to disable selinux temporarily to configure firewall and update-initramfs
+
+# Install SELinux and activate it
+
+sudo apt install selinux-basics selinux-policy-default auditd semanage-utils
+
+sudo selinux-activate
+
+# Set SELinux as permissive
+
+sudo vi /etc/selinux/config
+
+# SELINUX=permissive
+
+# Reboot for relabel
+
+# Set SELinux as enforcing
+
+sudo vi /etc/selinux/config
+
+# SELINUX=enforcing
+

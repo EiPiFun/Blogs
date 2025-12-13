@@ -1,0 +1,10 @@
+sudo docker image list
+sudo docker image remove *
+sudo docker image prune
+
+sudo docker container list
+sudo docker container remove *
+sudo docker container prune
+
+sudo docker system prune
+sudo docker system prune --all

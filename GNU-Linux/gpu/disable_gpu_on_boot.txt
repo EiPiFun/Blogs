@@ -1,0 +1,89 @@
+# Disable gpu kernel module
+
+# Check video module, i915/iris/amdgpu/nouveau/nvidia
+
+lsmod | grep video
+
+# modeset=0
+
+sudo vi /etc/modprobe.d/eipifun.conf
+
+```
+options i915 modeset=0
+```
+
+# Remove gpu kernel
+
+sudo vi /etc/systemd/system/rmmod_igpu.service
+
+```
+[Unit]
+Description=rmmod igpu
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/rmmod --force i915
+
+[Install]
+WantedBy=multi-user.target
+```
+
+sudo systemctl enable rmmod_igpu
+
+# Or blacklist gpu kernel module
+# But blacklist internal gpu module may cause the internal monitor unattached to any gpu and cannot be disabled
+# But the internal sound may be influenced
+
+sudo vi /etc/modproble/eipifun.conf
+
+```
+blacklist i915
+```
+
+# Update initramfs if needed
+
+# Remove/Poweroff PCI device
+# Reference: https://wiki.archlinux.org/title/Hybrid_graphics
+# Intel 0x8086, AMD 0x1022, NVIDIA 0x10de
+
+sudo vi /etc/udev/rules.d/remove_igpu.rules
+
+```
+# Remove Intel VGA/3D controller devices
+ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+```
+
+# Or remove more devices for external gpu
+
+sudo vi /etc/udev/rules.d/remove_egpu.rules
+
+```
+# Remove NVIDIA USB xHCI Host Controller devices, if present
+ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c0330", ATTR{power/control}="auto", ATTR{remove}="1"
+
+# Remove NVIDIA USB Type-C UCSI devices, if present
+ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x0c8000", ATTR{power/control}="auto", ATTR{remove}="1"
+
+# Remove NVIDIA Audio devices, if present
+ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x040300", ATTR{power/control}="auto", ATTR{remove}="1"
+
+# Remove NVIDIA VGA/3D controller devices
+ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
+```
+
+# Reboot
+
+# Check video module
+
+lsmod | grep video
+
+# Check PCI devices
+
+lspci -nn
+
+# Check GPU power state
+
+cat /sys/class/drm/card*/device/power_state
+cat /sys/bus/pci/devices/0000:00:02.0/power_state
+

@@ -1,0 +1,7 @@
+# Display date and time
+
+date
+
+# Uptime since boot
+
+uptime

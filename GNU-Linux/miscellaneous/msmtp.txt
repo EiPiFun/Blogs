@@ -1,0 +1,31 @@
+vi ~/.msmtprc
+
+```
+# Set default values for all following accounts.
+defaults
+auth on
+tls on
+logfile ~/.msmtp.log
+
+account exmail
+host smtp.exmail.qq.com
+port 465
+tls_starttls off
+from username@domain.tld
+user username@domain.tld
+password 123456
+
+# Set a default account
+# account default : debian
+account default : exmail
+```
+
+chmod 600 ~/.msmtprc
+
+vi ~/.caffrc
+
+```
+$ENV{'PERL_MAILERS'} = 'sendmail:/usr/bin/msmtp';
+```
+
+

@@ -1,0 +1,82 @@
+# Enable NetworkManager if needed
+
+sudo vi /etc/NetworkManager/NetworkManager.conf
+
+sudo systemctl restart NetworkManager
+
+# managed=true
+
+# Check and configure, wifi plugin may miss
+
+systemctl status NetworkManager
+
+nmcli
+
+nmcli device status
+
+nmcli radio wifi
+
+nmcli radio wifi on
+
+nmcli device wifi list
+
+nmcli device wifi connect "SSID" password "Password"
+
+nmcli device wifi connect "SSID" --ask
+
+# Connection profile
+
+nmcli connection
+nmcli connection reload
+nmcli connection up
+nmcli connection down
+nmcli connection add
+nmcli connection modify
+nmcli connection edit
+nmcli connection delete
+
+# If hidden
+
+nmcli connection add type wifi con-name "ConnectionName" ifname "IFName" ssid "SSID" wifi-sec.key-mgmt wpa-psk wifi-sec.psk "Password"
+
+# If 802.1x by certificate
+
+nmcli connection add \
+ type wifi con-name "ConnectionName" ifname "IFName" ssid "SSID" -- \
+ wifi-sec.key-mgmt wpa-eap 802-1x.eap tls 802-1x.identity "UserName" \
+ 802-1x.ca-cert ~/ca.pem 802-1x.client-cert ~/cert.pem \
+ 802-1x.private-key ~/key.pem 802-1x.private-key-password "Password"
+ 
+nmcli connection add \
+ type wifi con-name "ConnectionName" ifname "IFName" ssid "SSID" -- \
+ wifi-sec.key-mgmt wpa-eap 802-1x.eap peap 802-1x.phase2-auth \
+ mschapv2 802-1x.identity "UserName" 802-1x.password "Password"
+ 
+ nmcli connection
+ nmcli connection reload
+ nmcli connection up "ConnectionName"
+ nmcli connection up "ConnectionName" --ask
+
+# Specify band
+# bg: 2.4 GHz
+# a: 5 GHz
+# band is got from nm-connection-editor
+
+nmcli connection modify "ConnectionName" wifi.band bg
+
+# Or edit
+
+sudo vi /etc/NetworkManager/system-connections/"ConnectionName".nmconnection
+
+```
+[wifi]
+band=a
+```
+
+# Apply
+
+nmcli connection
+nmcli connection reload
+nmcli connection up "ConnectionName"
+nmcli connection up "ConnectionName" --ask
+

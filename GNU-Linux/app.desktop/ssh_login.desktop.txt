@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=SSH Login
+Exec=sshpass -f /home/eipifun/Documents/Dongxu/Dongxu.txt ssh Dongxu@c0.s.rruu.cc
+Terminal=true

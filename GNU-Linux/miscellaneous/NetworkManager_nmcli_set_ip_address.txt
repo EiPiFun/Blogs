@@ -1,0 +1,76 @@
+# List connections
+
+nmcli connection show
+
+# Rename
+
+nmcli connection modify 'Wired connection 1' connection.id enp6s0
+
+# Or add
+
+nmcli connection add type ethernet autoconnect yes con-name enp6s0 ifname enp6s0
+
+# Set dhcp
+
+nmcli connection modify enp6s0 ipv4.method auto ipv6.method auto
+
+# Or edit
+
+sudo vi /etc/NetworkManager/system-connections/enp6s0.nmconnection
+
+```
+[connection]
+id=enp6s0
+type=ethernet
+autoconnect-priority=-999
+interface-name=enp6s0
+
+[ethernet]
+
+[ipv4]
+method=auto
+
+[ipv6]
+addr-gen-mode=default
+method=auto
+```
+
+# Set static ip address
+
+nmcli connection modify enp6s0 ipv4.method manual ipv4.address 192.168.2.12/24 ipv4.gateway 192.168.2.1 ipv4.dns 192.168.2.1
+
+# Or edit
+
+sudo vi /etc/NetworkManager/system-connections/enp6s0.nmconnection
+
+```
+[connection]
+id=enp6s0
+type=ethernet
+autoconnect-priority=-999
+interface-name=enp6s0
+
+[ethernet]
+
+[ipv4]
+address=192.168.2.12/24
+dns=192.168.2.1;
+gateway=192.168.2.1
+method=manual
+
+[ipv6]
+addr-gen-mode=default
+method=auto
+```
+
+# Apply and check
+
+nmcli connection
+nmcli connection reload
+nmcli connection up enp6sp
+
+sudo systemctl restart NetworkManager
+
+ip addr
+
+

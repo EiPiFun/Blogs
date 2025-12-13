@@ -1,0 +1,10 @@
+git clone https://github.com/mpv-player/mpv-build.git
+
+cd ./mpv-build/
+
+./update
+
+./rebuild -j
+
+sudo ./install
+

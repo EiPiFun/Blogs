@@ -1,0 +1,4 @@
+sudo nano /etc/mpdprobe.d/eipifun.conf
+
+# blacklist irdma
+# blacklist ib_core

@@ -1,0 +1,2 @@
+sudo chmod 644 /etc/systemd/system/myservice.service
+

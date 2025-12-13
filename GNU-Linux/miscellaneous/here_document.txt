@@ -1,0 +1,19 @@
+#!/usr/bin/sh
+
+cat << EXAMPLE
+e
+x
+a
+m
+p
+l
+e
+EXAMPLE
+
+# Could use it to comment
+
+<< COMMENTEXAMPLE
+echo YouCannotSeeIt
+COMMENTEXAMPLE
+
+

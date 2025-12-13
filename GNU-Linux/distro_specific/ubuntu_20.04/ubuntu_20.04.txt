@@ -1,0 +1,15 @@
+sudo apt install gnome-session
+sudo apt install gnome-software
+sudo apt remove --purge snapd*
+sudo apt autoremove
+
+# Change Time Zone and disable "Automatic Date & Time"
+# Atlantic/Reykjavik
+
+# Recheck and install system updates
+# Reboot
+
+# Install additional drivers and language support
+# Reboot
+
+# Change NVIDIA PRIME Profiles to "NVIDIA"

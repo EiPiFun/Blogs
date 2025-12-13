@@ -1,0 +1,8 @@
+sudo zypper install --no-recommends ibus ibus-gtk3 ibus-gtk4
+
+sudo zypper install --no-recommends ibus-libpinyin ibus-table ibus-table-compose ibus-table-chinese-wubi-jidian
+
+sudo zypper install --no-recommends python3-gobject python3-dbus-python
+
+# May need to modify /usr/bin/ibus-setup 
+

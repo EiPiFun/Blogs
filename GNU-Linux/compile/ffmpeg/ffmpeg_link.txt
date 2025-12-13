@@ -1,0 +1,12 @@
+sudo ln -s /opt/software/ffmpeg-6.1.1/bin/ffmpeg /opt/software/bin/ffmpeg
+sudo ln -s /opt/software/ffmpeg-6.1.1/bin/ffprobe /opt/software/bin/ffprobe
+
+sudo ln -s /opt/software/ffmpeg-6.1.1/lib/libavdevice.so.60.3.100 /opt/software/lib/libavdevice.so.60
+sudo ln -s /opt/software/ffmpeg-6.1.1/lib/libavfilter.so.9.12.100 /opt/software/lib/libavfilter.so.9
+sudo ln -s /opt/software/ffmpeg-6.1.1/lib/libavformat.so.60.16.100 /opt/software/lib/libavformat.so.60
+sudo ln -s /opt/software/ffmpeg-6.1.1/lib/libavcodec.so.60.31.102 /opt/software/lib/libavcodec.so.60
+sudo ln -s /opt/software/ffmpeg-6.1.1/lib/libpostproc.so.57.3.100 /opt/software/lib/libpostproc.so.57
+sudo ln -s /opt/software/ffmpeg-6.1.1/lib/libswresample.so.4.12.100 /opt/software/lib/libswresample.so.4
+sudo ln -s /opt/software/ffmpeg-6.1.1/lib/libswscale.so.7.5.100 /opt/software/lib/libswscale.so.7
+sudo ln -s /opt/software/ffmpeg-6.1.1/lib/libavutil.so.58.29.100 /opt/software/lib/libavutil.so.58
+

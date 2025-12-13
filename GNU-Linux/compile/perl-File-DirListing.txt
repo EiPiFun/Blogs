@@ -1,0 +1,11 @@
+tar -xf ./File-DirList-0.05.tar.gz
+
+cd ./File-DirList-0.05/
+
+perl Makefile.PL
+
+make
+
+sudo make install
+
+

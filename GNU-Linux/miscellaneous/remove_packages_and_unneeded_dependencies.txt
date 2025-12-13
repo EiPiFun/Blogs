@@ -1,0 +1,16 @@
+sudo dnf autoremove
+
+sudo apt autoremove
+
+# zypper need query
+
+zypper remove --clean-deps *
+
+zypper packages --installed-only --unneeded
+zypper packages --installed-only --suggested
+zypper packages --installed-only --recommended
+
+for i in $(zypper packages --installed-only --unneeded|cut -d '|' -f 3);do sudo zypper remove -y $i;done
+for i in $(zypper packages --installed-only --unneeded|awk 'NR>4 {print $5}';do sudo zypper remove -y $i;done
+
+

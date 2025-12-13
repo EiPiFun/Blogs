@@ -1,0 +1,43 @@
+# PCIe bus and ids could be found by: lspci -nn | grep NVIDIA
+
+# Create and enable systemd service
+
+sudo vi /etc/systemd/system/pci_remove_nvidia.service
+
+```
+[Unit]
+Description=PCI Remove NVIDIA
+After=sysinit.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/sh -c '/usr/bin/echo 1 > /sys/bus/pci/devices/0000:01:00.1/remove;/usr/bin/echo 1 > /sys/bus/pci/devices/0000:01:00.0/remove'
+
+[Install]
+WantedBy=multi-user.target
+```
+
+sudo systemctl daemon-reload
+sudo systemctl enable pci_remove_nvidia
+sudo systemctl start pci_remove_nvidia
+systemctl status pci_remove_nvidia
+
+# Check renderer128, cause renderD128 is not always integrated GPU if nouveau or nvidia is loaded
+
+cat /sys/class/drm/renderD128/device/vendor
+
+cat /sys/class/drm/renderD*/device/power_state
+
+# blacklist nouveau or nvidia if renderD128 is not integrated GPU
+
+sudo vi /etc/modprobe.d/eipifun.conf
+
+```
+blacklist nouveau
+blacklist nvidia_uvm
+blacklist nvidia_modeset
+blacklist nvidia_drm
+blacklist nvidia
+```
+
+

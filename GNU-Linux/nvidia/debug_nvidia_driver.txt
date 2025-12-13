@@ -1,0 +1,16 @@
+lsmod|grep nouveau
+
+lsmod|grep nvidia
+
+sudo modprobe --remove nouveau
+
+sudo modprobe nvidia
+
+ls /etc/modprobe.d/
+
+ls /usr/lib/modprobe.d/
+
+sudo dkms status
+
+sudo akmods --rebuild
+

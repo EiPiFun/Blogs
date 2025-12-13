@@ -1,0 +1,29 @@
+# https://github.com/Hagb/docker-easyconnect
+# Install docker
+
+sudo systemctl start docker
+
+sudo docker pull mzz2017/v2raya
+
+sudo docker container stop v2raya
+sudo docker container rm v2raya
+
+sudo docker run -d --restart=always --privileged --network=host --name v2raya -e V2RAYA_V2RAY_BIN=/usr/local/bin/v2ray -e V2RAYA_LOG_FILE=/tmp/v2raya.log -v /lib/modules:/lib/modules:ro -v /etc/resolv.conf:/etc/resolv.conf -v /etc/v2raya:/etc/v2raya mzz2017/v2raya
+
+sudo docker pull mzz2017/v2raya
+
+# Reset password
+
+sudo docker stop v2raya
+sudo docker run -it --volumes-from v2raya mzz2017/v2raya --reset-password
+
+# Remove container
+
+sudo docker container ls
+sudo docker container rm ***
+
+# Remove image
+
+sudo docker image ls
+sudo docker image rm ***
+

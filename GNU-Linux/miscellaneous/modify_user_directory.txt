@@ -1,0 +1,6 @@
+# Change $HOME
+sudo usermod -m -d $new_home_location $username
+
+# Change "Documents"
+nano ~/.config/user-dirs.dirs
+

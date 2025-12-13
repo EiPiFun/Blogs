@@ -1,0 +1,33 @@
+# Check network interfaces
+
+ip addr show
+
+# Set dhcp
+
+sudo vi /etc/network/interfaces
+
+# # The primary network interface
+# auto enp0s3
+# allow-hotplug enp0s3
+# iface enp0s3 inet dhcp
+#  dns-nameservers 8.8.8.8
+
+# Set static ip address
+
+sudo vi /etc/network/interfaces
+
+# # The primary network interface
+# auto enp0s3
+# allow-hotplug enp0s3
+# iface enp0s3 inet static
+#  address 192.168.1.183
+#  netmask 255.255.255.0
+#  gateway 192.168.1.1
+#  dns-nameservers 8.8.8.8
+
+# Apply and check
+
+sudo systemctl restart networking.service
+
+ip addr
+

@@ -1,0 +1,21 @@
+tar -xf fftw-*.tar.gz
+cd ./fftw-*
+
+mkdir ./build/
+cd ./build/
+
+# fftw in different precisions could be installed in the same prefix
+
+# Single precision
+../configure --enable-shared --enable-threads --enable-openmp --enable-mpi --enable-sse2 --enable-avx2 --enable-float --prefix=*
+# Double precision
+../configure --enable-shared --enable-threads --enable-openmp --enable-mpi --enable-sse2 --enable-avx2 --prefix=*
+# Long double precision
+../configure --enable-shared --enable-threads --enable-openmp --enable-mpi --enable-long-double --prefix=*
+
+make -j
+make install
+
+# Add to LD_LIBRARY_PATH and PKG_CONFIG_PATH when using
+
+

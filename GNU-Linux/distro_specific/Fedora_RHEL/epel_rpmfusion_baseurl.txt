@@ -1,0 +1,15 @@
+sudo vi /etc/yum.repos.d/epel.repo
+# Comment metalink and add baseurl
+# baseurl=https://mirrors.aliyun.com/epel/$releasever/Everything/$basearch/
+
+sudo vi /etc/yum.repos.d/epel-next.repo
+# Comment metalink and add baseurl
+# baseurl=https://mirrors.aliyun.com/epel/next/$releasever/Everything/$basearch/
+
+sudo vi /etc/yum.repos.d/rpmfusion-free-updates.repo
+# Comment metalink and add baseurl
+# baseurl=https://mirrors.aliyun.com/rpmfusion/free/el/updates/$releasever/$basearch/
+
+sudo vi /etc/yum.repos.d/rpmfusion-nonfree-updates.repo
+# Comment metalink and add baseurl
+# baseurl=https://mirrors.aliyun.com/rpmfusion/nonfree/el/updates/$releasever/$basearch/

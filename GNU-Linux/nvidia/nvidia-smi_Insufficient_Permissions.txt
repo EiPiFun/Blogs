@@ -1,0 +1,10 @@
+# Failed to initialize NVML: Insufficient Permissions
+
+# Find the usergroup
+
+ls -l /device/nvidia*
+
+# add to user group
+
+sudo usermod -a -G video $(whoami)
+

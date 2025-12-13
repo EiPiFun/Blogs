@@ -1,0 +1,4 @@
+# To check openmpi info
+
+ompi_info
+

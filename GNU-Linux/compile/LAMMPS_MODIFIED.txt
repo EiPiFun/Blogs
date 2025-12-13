@@ -1,0 +1,39 @@
+# History versions: https://download.lammps.org/tars/
+
+# One Partical
+# https://www.sciencedirect.com/science/article/pii/S0010465516302892
+# Lennard-Jones type pair-potential method for coarse-grained lipid bilayer membrane simulations in LAMMPS
+# https://data.mendeley.com/datasets/4v53nkv5hc/1
+# With lammps 10Aug2015
+
+tar -xf ./lammps-10Aug2015.tar.gz
+cd ./lammps-10Aug2015/src/
+
+for i in .../bond_harmonic1.cpp .../bond_harmonic1.h .../pair_fluidmembrane.cpp .../pair_fluidmembrane.h;do
+cp $i ./
+done
+
+make
+make yes-molecule yes-peri yes-asphere
+make package-status
+make mpi -j 6
+
+
+# bond break ligand
+# https://www.sciencedirect.com/science/article/pii/S0022283622004430
+# Quantifying Shear-induced Margination and Adhesion of Platelets in Microvascular Blood Flow
+# With lammps 9Jan2009
+
+tar -xf ./lammps-9Jan2009.tar.gz
+cd ./lammps-9Jan2009/src/
+
+for i in .../bond_break_ligand.cpp  .../bond_break_ligand.h  .../fix_bond_AD.cpp  .../fix_bond_AD.h;do
+cp $i ./
+done
+
+make
+make yes-all no-meam no-poems no-xtc
+make package-status
+make openmpi -j 6
+
+

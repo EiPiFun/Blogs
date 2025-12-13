@@ -1,0 +1,11 @@
+tar -xf ./lapack-*.tar.gz
+cd ./lapack-*
+
+mkdir ./build/
+
+cd ./build/
+
+cmake -DBUILD_SHARED_LIBS=on -DCMAKE_INSTALL_PREFIX=* ..
+
+make install -j
+

@@ -1,0 +1,4 @@
+sudo add-apt-repository ppa:$ppa_name
+
+lubuntu-dev/backports
+mozillateam/ppa

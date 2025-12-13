@@ -1,0 +1,3 @@
+gsettings set org.gnome.Epiphany.web:/ hardware-acceleration-policy 'always'
+
+

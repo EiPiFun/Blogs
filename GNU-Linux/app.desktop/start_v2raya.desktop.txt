@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=start v2raya
+Exec=/usr/bin/sh /home/eipifun/Documents/docker/start_v2raya.sh
+Terminal=true

@@ -1,0 +1,8 @@
+sudo vi /etc/default/grub
+# GRUB_DEFAULT=0
+# GRUB_DEFAULT=saved
+
+sudo vi /boot/grub2/grubenv
+
+sudo vi /boot/config-*
+

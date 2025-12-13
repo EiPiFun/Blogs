@@ -1,0 +1,20 @@
+# Do a minimal installation, select nothing
+
+# Mount iso as repo
+
+# Configure network
+
+sudo apt install network-manager
+
+# Use rndis if needed
+
+# Switch to online repo
+
+# Install essentials
+
+sudo apt install bash-completion sudo
+
+# Install gnome-core only
+
+sudo apt install gnome-core
+

@@ -1,0 +1,21 @@
+# Reference: https://wiki.archlinux.org/title/NVIDIA_Optimus
+
+sudo vi /etc/X11/xorg.conf.d/nvidia_intel_as_primary_gpu_x11.conf
+# Or: sudo vi /usr/share/X11/xorg.conf.d/nvidia_intel_as_primary_gpu_x11.conf
+
+```
+Section "OutputClass"
+    Identifier "intel"
+    MatchDriver "i915"
+    Driver "modesetting"
+    Option "PrimaryGPU" "yes"
+EndSection
+
+Section "OutputClass"
+    Identifier "nvidia"
+    MatchDriver "nvidia-drm"
+    Driver "nvidia"
+    Option "PrimaryGPU" "no"
+EndSection
+```
+

@@ -1,0 +1,11 @@
+# Dependency error
+sudo aptitude install *
+
+# Overwrite error
+# trying to overwrite '/usr/*', which is also in package *
+# Errors were encountered while processing: /var/cache/apt/archives/*.deb
+
+# Solution:
+
+sudo dpkg -i --force-overwrite /var/cache/apt/archives/*.deb
+sudo apt --fix-broken install

@@ -1,0 +1,32 @@
+# Install dependences
+# May need to add path
+
+RedHat|SUSE|Debian
+
+gcc
+gcc-c++/g++
+gcc-gfortran/gcc-fortran/gfortran
+cmake
+openmpi-devel/openmpi4-dev/libopenmpi-dev
+fftw-devel/fftw3-devel/libfftw3-dev
+tensorflow
+
+# RedHat only
+module load mpi
+
+# Compile and install CP2K
+
+cd .../cp2k-***/
+cd ./tool/toolchain/
+# Install dependences mentioned in "install_requirements_***.sh"
+./install_cp2k_toolchain.sh --help
+
+# "--with-***=system" to use system installed dependences, "--with-***=install" to download and compile dependences", --with-***=no" to disable packages;
+
+./install_cp2k_toolchain.sh --with-gcc=system --with-cmake=system --mpi-mode=openmpi --with-openmpi=system --with-fftw=system --enable-cuda=yes --gpu-ver=*
+
+cp .../cp2k-***/tools/toolchain/install/arch/* .../cp2k-***/arch/
+source .../cp2k-***/tools/toolchain/install/setup
+cd .../cp2k-***/
+# May need to modify ".../cp2k-***/arch/local_cuda.ssmp" for "sm"
+make -j ARCH=local_cuda VERSION="ssmp sdbg psmp pdbg"

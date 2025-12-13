@@ -1,0 +1,40 @@
+# Install ff2mpv browser extension
+
+# Install ff2mpv
+
+tar -xf ff2mpv-*.tar.gz
+cd ./ff2mpv-*/
+./install.sh
+
+# Install yt-dlp and make it executable if needed
+
+# Configure preferred codec
+# av01>vp9.2/vp9>h265>h264
+
+vi ~/.config/yt-dlp.conf
+
+```
+--format-sort=codec:h264
+```
+
+# Install ff2mpv-rust and make it executable
+
+# Configure ff2mpv if needed
+
+vi ~/.config/ff2mpv-rust.json
+
+```
+{
+    "player_command": "mpv",
+    "player_args": ["--no-terminal", "--"]
+}
+```
+
+# Change path in ff2mpv.json for ff2mpv-rsut
+
+vi ~/.mozilla/native-messaging-hosts/ff2mpv.json 
+
+vi ~/.config/chromium/NyativeMessagingHosts/ff2mpv.json
+
+vi ~/.config/google-chrome/NativeMessagingHosts/ff2mpv.json
+

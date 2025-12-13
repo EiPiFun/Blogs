@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily Restart Display Manager Timer
+
+[Timer]
+OnCalendar=*-*-* 04:00:00
+Unit=daily_restart_display_manager.service
+
+[Install]
+WantedBy=timers.target
+

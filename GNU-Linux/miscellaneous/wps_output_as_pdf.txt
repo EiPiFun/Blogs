@@ -1,0 +1,5 @@
+# Install libtiff
+
+# Create link if version not matched, openSUSE for instance
+sudo ln -s /usr/lib64/libtiff.so.6 /usr/lib64/libtiff.so.5
+

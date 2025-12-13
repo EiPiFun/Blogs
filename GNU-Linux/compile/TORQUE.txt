@@ -1,0 +1,12 @@
+# Dependencies
+
+openssh-devel
+crypto-devel
+
+# Install
+
+tar -xf ./torque-*.tar.gz
+cd ./torque-*
+./configure --prefix=*** --disable-gcc-warnings
+make -j CFLAGS="-fpermissive"
+make install

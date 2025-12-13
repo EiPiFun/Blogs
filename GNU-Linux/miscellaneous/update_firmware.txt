@@ -1,0 +1,9 @@
+# Enable remote metadata source
+
+sudo vi /etc/fwupd/remote.d/*
+
+# Get updates and inatall
+
+sudo fwupdmgr get-updates
+
+sudo fwupdmgr update

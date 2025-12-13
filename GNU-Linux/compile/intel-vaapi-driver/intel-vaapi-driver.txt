@@ -1,0 +1,22 @@
+# Install libdrm-devel/libdrm-dev, libX11-devel/libx11-dev and wayland-devel/libwayland-dev
+
+# Install intel-vaapi-driver
+
+tar -xf ./intel-vaapi-driver-*.tar.gz
+cd ./intel-vaapi-driver-*/
+
+mkdir ./build/
+cd ./build/
+
+export LIBVA_DRIVERS_PATH=*/dri/
+
+../configure --prefix=* --enable-hybrid-codec --enable-tests
+
+make install -j
+
+# export if needed
+
+export LIBVA_DRIVERS_PATH=*/dri/
+export LIBVA_DRIVER_NAME=i965
+
+

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=SSHFS Mount
+Exec=sshfs Dongxu@c0.s.rruu.cc:/homex/ /home/eipifun/mnt/Dongxu -o ssh_command='sshpass -f /home/eipifun/Documents/Dongxu/Dongxu.txt ssh'
+Terminal=false

@@ -1,0 +1,24 @@
+sudo apt remove --purge snapd*
+sudo apt remove --purge libreoffice*
+sudo apt autoremove
+sudo apt install fcitx
+sudo apt install fcitx-pinyin fcitx-table-wubi
+sudo apt install fcitx-config-gtk
+sudo apt install engrampa
+sudo apt install xfce4-screenshooter
+
+sudo featherpad /etc/bluetooth/main.conf
+# AutoEnable=false
+
+# Enable "RTC is local time" or change Timezone in Date and time
+# Atlantic/Reykjavik
+
+# Switch Input Method to "fcitx"
+
+# Recheck and install system updates
+# Reboot
+
+# Install additional drivers
+# Reboot
+
+# Change NVIDIA PRIME Profiles to "NVIDIA"

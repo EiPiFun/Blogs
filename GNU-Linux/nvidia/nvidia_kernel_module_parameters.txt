@@ -1,0 +1,18 @@
+# suspend problem maybe caused by NVreg_PreserveVideoMemoryAllocations
+
+# cuda usage including nvdec and nvidia-vaapi-driver may cause suspend problems
+# prefer vulkan or vdpau for hardware video decoding
+
+sudo vi /etc/modprobe.d/eipifun.conf
+
+```
+blacklist nouveau
+options nvidia-drm modeset=1 fbdev=1
+options nvidia NVreg_TemporaryFilePath=/var/tmp/
+options nvidia NVreg_PreserveVideoMemoryAllocations=1
+```
+
+# check parameters
+
+cat /proc/driver/nvidia/params | sort
+

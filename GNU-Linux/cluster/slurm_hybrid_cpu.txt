@@ -1,0 +1,11 @@
+# For hybrid cpu includes performance cores and efficiency cores, slurmd may throw error
+
+sudo slurmd -C
+
+# slurmd: error: Thread count (11) not multiple of core count (6)
+
+sudo vi /etc/slurm/slurm.conf
+
+# SlurmdParameters=config_overrides
+
+

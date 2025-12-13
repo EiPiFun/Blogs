@@ -1,0 +1,37 @@
+# Default to graphical
+
+sudo systemctl set-default graphical.target
+
+# Install
+
+sudo zypper install --no-recommends patterns-gnome-gnome gnome-session-wayland
+
+sudo zypper install --no-recommends alsa pipewire pipewire-alsa
+
+sudo zypper install --no-recommends gvfs gvfs-fuse gvfs-backends
+
+sudo zypper install --no-recommends xdg-desktop-portal-gtk xdg-desktop-portal-gnome
+
+sudo zypper install --no-recommends gnome-console gnome-terminal nautilus nautilus-extension-terminal gnome-text-editor gedit
+sudo zypper install --no-recommends gnome-disk-utility file-roller gnome-calculator loupe evince evince-plugin-pdfdocument
+sudo zypper install --no-recommends gnome-shell-classic gnome-power-manager
+sudo zypper install --no-recommends gnome-extensions gnome-browser-connector
+sudo zypper install --no-recommends gnome-backgrounds
+
+sudo zypper install --no-recommends claws-mail
+
+sudo zypper install --no-recommends distribution-logos-openSUSE-icons
+sudo zypper install --no-recommends distribution-logos-openSUSE-Slowroll
+sudo zypper install --no-recommends distribution-logos-openSUSE-Leap
+
+sudo zypper install patterns-fonts-fonts
+sudo zypper install patterns-fonts-fonts_opt
+
+# Enable x11 for Gnome 47 or older if needed
+
+sudo zypper install --no-recommends patterns-gnome-gnome_x11 gnome-session-xsession gnome-shell-classic-xsession
+
+# Configure display manager
+
+sudo update-alternatives --config default-displaymanager
+

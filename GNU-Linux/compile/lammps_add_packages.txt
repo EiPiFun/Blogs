@@ -1,0 +1,12 @@
+1. Copy package folder to $lammps_code_root/src/
+
+2. Add package name (EIPIFUN as an example) to $lammps_code_root/cmake/CMakeLists.txt
+
+```
+set(STANDARD_PACKAGES
+    EIPIFUN)
+```
+
+3. Add -DPKG_EIPIFUN=on when compiling
+
+

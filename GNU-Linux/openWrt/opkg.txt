@@ -1,0 +1,6 @@
+ sed -i 's|downloads.openwrt.org|mirrors.aliyun.com/openwrt|g' /etc/opkg/distfeeds.conf
+
+# optional:
+vi /etc/opkg.conf
+# #options check_signature
+sed -i 's|https|http|g' /etc/opkg/distfeeds.conf

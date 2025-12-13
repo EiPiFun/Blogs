@@ -1,0 +1,64 @@
+# All paths, version number may be different.
+
+# Dependencies
+
+RedHat|SUSE|Debian
+
+cmake
+cuda
+fftw-devel/fftw3-devel/libfftw3-dev
+gcc
+gcc-c++/g++
+gcc-gfortran/gcc-fortran/gfortran
+openmpi-devel/openmpi4-dev/libopenmpi-dev
+
+# RedHat only
+module load mpi
+
+# May need to add path for cmake, cuda, fftw, gcc, openmpi, and installed lammps
+
+vi ~/.bash_profile
+
+***
+export PATH
+export LIBRARY_PATH
+export LD_LIBRARY_PATH
+export PKG_CONFIG_PATH
+
+# Apply path modifications
+
+source ~/.bash_profile
+
+# Extract
+
+tar -xf ./lammps-*.tar.gz
+cd ./lammps-*
+mkdir ./build && cd ./build
+# use "cd .. && rm -r ./build && mkdir ./build && cd ./build" to clean and recreate ./build
+# COMPILER and FFTW3 may need be specified; GPU_ARCH relies on hardware and driver;Kokkos_ARCH_HOSTARCH and Kokkos_ARCH_GPUARCH relies on hardware and driver;append "-DPKG_xxx=on" will preinstall package xxx.
+
+# if offline, disable packages need downloads
+cp ../cmake/presets/download.cmake ../cmake/presets/nodownload.cmake;sed -e "s| ON | OFF |g" -i ../cmake/presets/nodownload.cmake
+# optional: -DPKG_COMPRESS=off -DPKG_PYTHON=off
+
+# With CUDA
+
+cmake -DBUILD_MPI=on -DBUILD_OMP=on -DPKG_OPENMP=on -DFFT=FFTW3 -DFFT_SINGLE=on -DPKG_KSPACE=on -DUSE_INTERNAL_LINALG=on -DGPU_API=cuda -DGPU_PREC=mixed -DGPU_ARCH=sm_* -DPKG_GPU=on -C ../cmake/presets/basic.cmake -DCMAKE_INSTALL_PREFIX=$HOME/software/lammps/ -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -C ../cmake/presets/most.cmake -DPKG_AMOEBA=off -C ../cmake/presets/nodownload.cmake -DBUILD_LAMMPS_GUI=off -DBUILD_TOOLS=off -DPKG_PYTHON=off -DPKG_COMPRESS=off -DPython3_EXECUTABLE=/python3 -DGZIP_EXECUTABLE=/gzip -DGIT_EXECUTABLE=/git -DFFMPEG_EXECUTABLE=/ffmpeg -DWITH_JPEG=off -DWITH_PNG=off -DWITH_FFMPEG=off -DPKG_CONFIG_EXECUTABLE=/pkgconf ../cmake
+
+# With Kokkos
+
+cmake -DBUILD_MPI=on -DBUILD_OMP=on -DPKG_OPENMP=on -DFFT=FFTW3 -DFFT_SINGLE=on -DPKG_KSPACE=on -DUSE_INTERNAL_LINALG=on -DKokkos_ARCH_HOSTARCH=on -DKokkos_ARCH_GPUARCH=on -DKokkos_ENABLE_CUDA=on -DKokkos_ENABLE_OPENMP=on -DPKG_KOKKOS=on -C ../cmake/presets/basic.cmake -DCMAKE_INSTALL_PREFIX=$HOME/software/lammps/ -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -C ../cmake/presets/most.cmake -DPKG_AMOEBA=off -C ../cmake/presets/nodownload.cmake -DBUILD_LAMMPS_GUI=off -DBUILD_TOOLS=off -DPKG_PYTHON=off -DPKG_COMPRESS=off -DPython3_EXECUTABLE=/python3 -DGZIP_EXECUTABLE=/gzip -DGIT_EXECUTABLE=/git -DFFMPEG_EXECUTABLE=/ffmpeg -DWITH_JPEG=off -DWITH_PNG=off -DWITH_FFMPEG=off -DPKG_CONFIG_EXECUTABLE=/pkgconf ../cmake
+
+# "-DLAMMPS-MACHINE=***" may help if mutiple versions coexist (rename "lmp" to "lmp_***"); "-DPKG_USER-OMP=on -DPKG_USER-MESO=on" may be needed for old version of lammps
+
+# Make
+
+make install -j
+
+# Add package xxx (keep former built files untouched before adding)
+
+cd .../lammps-*/build
+cmake -DPKG_xxx=on  ../cmake
+make install -j
+
+

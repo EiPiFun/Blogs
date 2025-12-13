@@ -1,0 +1,5 @@
+cat /sys/class/drm/renderD*/device/power_state
+
+
+
+

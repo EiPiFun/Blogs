@@ -1,0 +1,20 @@
+# From version 3.x to 3.y
+
+# Install python3.y python3.y-dev
+
+# Add a link name for python3.y, such as "newpy"
+
+sudo update-alternatives --list newpy
+# May show: "update-alternatives: error: no alternatives for newpy"
+
+sudo update-alternatives --install /usr/bin/newpy newpy /usr/bin/python3.y 3
+#The last number is of priority, the bigger the higher priority, and it can be changed to other number.
+
+sudo update-alternatives --list newpy
+# To check
+
+sudo update-alternatives --config newpy
+# To config
+
+
+# If you are using a newer version without preinstalled python2, you can use the link name "python"

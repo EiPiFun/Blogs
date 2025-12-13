@@ -1,0 +1,42 @@
+# Type=oneshot or Type=simple
+# simple: success when launching
+# oneshot: success after launching
+
+sudo nano /etc/systemd/system/myservice.service
+# or /usr/lib/systemd/system/myservice.service
+
+```
+[Unit]
+Description=myservice
+
+[Service]
+Type=oneshot
+ExecStart=/workspace/scripts/myservice-service.sh start
+ExecReload=/workspace/scripts/myservice-service.sh restart
+ExecStop=/workspace/scripts/myservice-service.sh stop
+```
+
+sudo nano /etc/systemd/system/myservice.timer
+# or /usr/lib/systemd/system/myservice.timer
+
+```
+[Unit]
+Description=myservice timer
+
+[Timer]
+#OnBootSec=4h
+#OnUnitActiveSec=4h
+OnCalendar=*-*-* 04:00:00
+Unit=myservice.service
+
+[Install]
+WantedBy=timers.target
+```
+
+sudo chmod a+x /workspace/scripts/myservice-service.sh
+
+sudo semanage fcontext -a -t bin_t /workspace/scripts/myservice-service.sh
+
+sudo restorecon -rvF /workspace/scripts/myservice-service.sh
+
+

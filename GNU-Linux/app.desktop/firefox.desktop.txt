@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Firefox
+Exec=/home/eipifun/software/firefox/firefox
+Terminal=false
+Icon=/home/eipifun/software/firefox/firefox.png

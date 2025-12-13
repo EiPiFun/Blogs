@@ -1,0 +1,6 @@
+sudo syatemctl stop packagekit
+
+sudo systemctl disable packagekit
+
+sudo syatemctl mask packagekit
+

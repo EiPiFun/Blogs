@@ -1,0 +1,9 @@
+# Configure
+
+sudo vi (/usr)/etc/sudoers
+
+# secure_path, group
+
+# Common PATHs with higher priority: /usr/local/sbin/:/usr/local/bin/
+
+

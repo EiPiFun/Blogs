@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=CURLFTPFS Mount
+Exec=curlftpfs Dongxu:2NASSe1814@na.s.rruu.cc:553 /home/eipifun/mnt/Dongxu/
+Terminal=false

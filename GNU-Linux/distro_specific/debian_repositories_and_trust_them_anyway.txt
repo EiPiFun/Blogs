@@ -1,0 +1,36 @@
+# /etc/apt/sources.list
+
+```
+deb [trusted=yes] https://mirrors.aliyun.com/debian/ trixie main contrib non-free non-free-firmware
+deb [trusted=yes] https://mirrors.aliyun.com/debian/ trixie-updates main contrib non-free non-free-firmware
+deb [trusted=yes] https://mirrors.aliyun.com/debian-security/ trixie-security main contrib non-free non-free-firmware
+```
+
+# /etc/apt/sources.list.d/debian/sources
+
+```
+# Modernized from /etc/apt/sources.list
+Types: deb
+URIs: https://mirrors.aliyun.com/debian/
+Suites: trixie
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+Trusted: yes
+
+# Modernized from /etc/apt/sources.list
+Types: deb
+URIs: https://mirrors.aliyun.com/debian/
+Suites: trixie-updates
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+Trusted: yes
+
+# Modernized from /etc/apt/sources.list
+Types: deb
+URIs: https://mirrors.aliyun.com/debian-security/
+Suites: trixie-security
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+Trusted: yes
+```
+

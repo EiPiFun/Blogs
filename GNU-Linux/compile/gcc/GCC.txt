@@ -1,0 +1,66 @@
+# Install
+
+gcc
+g++
+make
+makeinfo
+libtool
+
+autoconf
+automake
+
+# Compile
+
+# Automake if needed
+
+tar -xf ./automake-*.tar.gz
+
+cd ./automake-*/
+
+./configure --prefix=*
+
+make -j
+
+make install
+
+# GMP
+
+tar -xf ./gmp-*.tar.gz
+
+# MPFR
+
+tar -xf ./mpfr-*.tar.gz
+
+# MPC
+
+tar -xf ./mpc-*.tar.gz
+
+# GCC
+
+tar -xf ./gcc-*.tar.gz
+
+cd ./gcc-*/
+
+cp -r .../gmp-*/ ./gmp/
+cp -r .../mpfr-*/ ./mpfr/
+cp -r .../mpc-*/ ./mpc/
+
+# May need to delete "target-libsanitizer" in ./configure
+
+# May need to add linux/cyclades.h
+
+# mkdir ./include/linux/
+# mv .../cyclades.h ./include/linux/
+
+mkdir ./build
+
+cd ./build
+
+../configure --prefix=* --enable-languages=c,c++,fortran,lto --enable-libgomp --disable-libsanitizer --disable-multilib
+
+make -j
+
+make install
+
+# Remember to add "cc" link
+

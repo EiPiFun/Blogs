@@ -1,0 +1,3 @@
+sudo vi /etc/lightdm/lightdm.conf
+
+autologin-user=***

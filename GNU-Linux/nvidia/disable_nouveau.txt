@@ -1,0 +1,18 @@
+# modprobe
+
+sudo vi /etc/modprobe.d/eipifun.conf
+
+```
+blacklist nouveau
+options nouveau modeset=0
+```
+
+# Update initramfs
+
+# Or, by grub
+
+sudo vi /etc/default/grub
+
+# GRUB_CMDLINE_LINUX="rd.driver.blacklist=nouveau modprobe.blacklist=nouveau"
+
+

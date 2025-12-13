@@ -1,0 +1,41 @@
+# Check service status
+sudo systemctl status ssh
+sudo systemctl status sshd
+
+# Backups ssh(d)_config
+sudo cp /etc/ssh/ssh(d)_config /etc/ssh/ssh(d)_config.bak
+
+# Modify ssh(d)_config
+sudo vi /etc/ssh/ssh(d)_config
+# Port 22
+# Port *
+
+# Add port for SELinux
+# Dependency: policycoreutils-python-utils, semanage-utils
+sudo semanage port -a -t ssh_port_t -p tcp *
+
+# Check SELinux permissive port
+sudo semanage port -l | grep ssh
+
+# Restart ssh(d) service
+sudo systemctl restart ssh
+sudo systemctl restart sshd
+
+# Enable and start firewall if not
+sudo systemctl enable firewalld
+sudo systemctl start firewalld
+
+# SELinux may obstacle firewall-cmd
+sudo setenforce 0
+
+# Add port for firewall
+sudo firewall-cmd --zone=public --permanent --add-port=*/tcp
+
+# Reload firewall configuration
+sudo firewall-cmd --reload
+
+# Restore SELinux to enforcing
+sudo setenforce 1
+
+# Check port
+sudo ss -tnlp | grep ssh

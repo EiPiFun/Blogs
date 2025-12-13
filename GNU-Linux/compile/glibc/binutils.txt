@@ -1,0 +1,11 @@
+tar -xf ./binutils-*.tar.gz
+cd ./binutils-*.tar.gz
+
+
+mkdir ./build/
+cd ./build/
+
+# exclude current diretory from LD_LIBRARY_PATH
+
+../configure --prefix=* --disable-werror
+

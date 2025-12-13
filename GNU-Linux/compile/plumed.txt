@@ -1,0 +1,17 @@
+tar -xf ./plumed-src-*.tar.gz
+cd .../plumed-src-*/
+
+mkdir ./build/
+cd ./build/
+
+../configure --disable-external-blas --disable-external-lapack --prefix=* --disable-gsl
+
+# compile in the root directory of plumed if --enable-modules=* or --enalbe-modules=all
+
+make -j
+
+# To patch MD code, patch in the root directory of the MD code, the compile
+# if GROMACS, disable thread-mpi, use mpi instead
+
+plumed patch -p
+

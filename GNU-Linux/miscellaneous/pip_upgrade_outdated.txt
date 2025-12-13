@@ -1,0 +1,11 @@
+# List
+
+pip list --outdated |cut -d " " -f 1 > ./outdated_list.txt
+
+pip freeze | cut -d "=" -f 1 > ./installed_list
+
+# Upgrade
+
+pip install --requirement ./outdated_list.txt ./outdated_list.txt --upgrade
+
+pip install --requirement ./installed_list.txt ./outdated_list.txt --upgrade

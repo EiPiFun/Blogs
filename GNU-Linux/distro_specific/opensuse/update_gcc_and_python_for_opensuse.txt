@@ -1,0 +1,9 @@
+for i in cc gcc; do for j in 7 11; do sudo update-alternatives --install /usr/bin/$i $i /usr/bin/gcc-$j $j; done; done
+
+for i in c++ g++; do for j in 7 11; do sudo update-alternatives --install /usr/bin/$i $i /usr/bin/g++-$j $j; done; done
+
+for i in python3 pip3; do for j in 6 11; do sudo update-alternatives --install /usr/bin/$i $i /usr/bin/$i.$j $j; done; done
+
+for i in pip; do for j in 6 11; do sudo sudo update-alternatives --install /usr/bin/$i $i /usr/bin/pip3.$j $j; done; done
+
+

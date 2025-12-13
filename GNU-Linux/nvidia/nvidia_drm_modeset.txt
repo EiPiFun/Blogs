@@ -1,0 +1,12 @@
+# Enable
+
+sudo vi /etc/modprobe.d/eipifun.conf
+
+# options nvidia-drm modeset=1
+
+# Check
+
+sudo cat /sys/module/nvidia_drm/parameters/modeset
+
+# Update initramfs
+

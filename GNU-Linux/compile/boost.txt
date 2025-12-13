@@ -1,0 +1,5 @@
+tar -xf ./boost_*.tar.gz
+cd .../boost_*/
+
+./bootstrap.sh
+./b2 install --prefix=*

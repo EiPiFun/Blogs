@@ -1,0 +1,23 @@
+sudo sed --expression='s|^metalink=|#metalink=|g' --expression='s|^#baseurl=http://download.example/pub/fedora/linux/|baseurl=https://mirrors.aliyun.com/fedora/|g' /etc/yum.repos.d/fedora*.repo -i.bak
+
+# Disable fedora-cisco-openh264
+
+sudo dnf makecache
+sudo dnf update
+
+sudo dnf install rpmfusion-free-release rpmfusion-nonfree-release
+sudo dnf install dkms
+sudo dnf install kernel-headers kernel-devel
+
+# Reboot to new kernel
+
+# Install NVIDIA Graphics Driver
+
+sudo gedit /etc/modprobe.d/hybutcn-nvidia.conf
+# blacklist nouveau
+# options nvidia-drm modeset=1
+
+# Check driver version
+ls /usr/src | grep nvidia
+
+sudo dkms install nvidia -v *

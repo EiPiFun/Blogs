@@ -1,0 +1,47 @@
+# Enable flags in about:config
+
+media.ffmpeg.vaapi.enabled,true
+media.hardware-video-decoding.force-enabled,true
+media.rdd-ffmpeg.enabled,true
+
+gfx.webrender.all,true
+gfx.x11-egl.force-enabled,true
+
+# environment variables
+
+export LIBVA_DRIVER_NAME=iHD
+export LIBVA_DRIVER_NAME=i965
+
+export LIBVA_DRI3_DISABLE=1
+
+export MOZ_DISABLE_RDD_SANDBOX=1
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_X11_EGL=1
+
+# optional flags, webm means vp8+vp9
+# the website may also drop av1 if vp8+vp9 disabled
+
+media.av1.enabled,false
+media.webm.enabled,false
+media.hevc.enabled,false
+
+# needed if nvidia-vaapi
+
+widget.dmabuf.force-enabled,true
+
+export LIBVA_DRIVER_NAME=nvidia
+export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+
+# Check codec in about:support
+
+# Debug
+
+export LIBVA_MESSAGING_LEVEL=2
+
+export MOZ_LOG="FFmpegVideo:5"
+
+export MOZ_DRM_DEVICE=/dev/dri/renderD128
+
+about:support
+
+

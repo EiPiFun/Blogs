@@ -1,0 +1,4 @@
+sudo vi /etc/default/grub
+
+# remove "rd.driver.blacklist=nouveau" in the GRUB_CMDLINE_LINUX
+

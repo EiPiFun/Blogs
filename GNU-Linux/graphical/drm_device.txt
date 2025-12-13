@@ -1,0 +1,2 @@
+export MOZ_DRM_DEVICE=/sys/class/drm/renderD128
+export WLR_DRM_DEVICES=/sys/class/drm/renderD128

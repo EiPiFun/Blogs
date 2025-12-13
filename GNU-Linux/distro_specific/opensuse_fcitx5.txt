@@ -1,0 +1,7 @@
+sudo zypper install --no-recommends fcitx5 fcitx5-configtool fcitx5-gtk3 fcitx5-gtk4
+
+sudo zypper install --no-recommends fcitx5-qt5 fcitxt5-qt6
+
+sudo zypper install --no-recommends fcitx5-chinese-addons
+
+

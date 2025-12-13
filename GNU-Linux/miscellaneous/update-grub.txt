@@ -1,0 +1,19 @@
+#!/usr/bin/sh
+
+if [ "$(/usr/bin/lsmod|/usr/bin/grep nvme)" ];then
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+else
+
+sudo modprobe nvme
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+for i in $(/usr/bin/lsmod|/usr/bin/grep nvme);do
+sudo modprobe --remove --force $i
+done
+
+fi
+
+

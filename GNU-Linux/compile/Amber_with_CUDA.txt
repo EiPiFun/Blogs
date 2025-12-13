@@ -1,0 +1,35 @@
+# Dependencies
+
+bison
+bzip2/libbz2
+flex
+zlib
+
+# May need to add path for cmake, cuda, fftw, gcc, openmpi, and installed amber
+
+vi ~/.bash_profile
+
+***
+export PATH
+export LIBRARY_PATH
+export LD_LIBRARY_PATH
+export PKG_CONFIG_PATH
+
+# Apply path modifications
+
+source ~/.bash_profile
+
+# Compile and install Amber
+
+tar xf AmberTools*.tar.gz
+cd ./amber22_src*
+
+cp -r ./build ./build-backup/ && cd ./build
+# use "cd .. && rm -r ./build && mkdir ./build && cd ./build" to clean and recreate ./build
+
+# COMPILER and FFTW3 may need be specified
+cmake -DMPI=TRUE -DOPENMP=TRUE -DUSE_FFT=TRUE -DFORCE_DISABLE_LIBS=mkl -DFORCE_INTERNAL_LIBS="blas;lapack;arpack;xblas;boost;fftw" -DCUDA=TRUE -DCMAKE_INSTALL_PREFIX=$HOME/software/amber/ -DCOMPILER=GNU -DBUILD_PYTHON=FALSE -DDOWNLOAD_MINICONDA=FALSE ..
+
+make install -j
+
+

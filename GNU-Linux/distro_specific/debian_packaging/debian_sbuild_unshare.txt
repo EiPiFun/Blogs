@@ -1,0 +1,80 @@
+# Reference: 
+# https://wiki.debian.org/sbuild
+# https://wiki.debian.org/Packaging/sbuild
+# https://wiki.debian.org/zigo/mysbuild
+
+# Install tools
+
+sudo apt install sbuild devscripts git-buildpackage quilt openstack-pkg-tools
+
+sudo apt install mmdebstrap uidmap
+
+# Install apt-cacher-ng
+
+sudo apt install apt-cacher-ng
+
+sudo systemctl enable apt-cacher-ng
+sudo systemctl restart apt-cacher-ng
+
+# Create chroot for sbuild
+# Change mirror if needed
+
+mkdir -p ~/.cache/sbuild/
+
+mmdebstrap --variant=buildd unstable ~/.cache/sbuild/unstable-amd64.tar.gz http://deb.debian.org/debian/ --aptopt='Acquire::http { Proxy "http://127.0.0.1:3142"; }'
+
+# Or include packages
+
+mmdebstrap --variant=buildd --include=ca-certificates,lintian,piuparts unstable ~/.cache/sbuild/unstable-amd64.tar.gz http://deb.debian.org/debian/ --aptopt='Acquire::http { Proxy "http://127.0.0.1:3142"; }'
+
+# Upgrade
+
+sbuild-update --chroot-mode=unshare --update --upgrade --dist-upgrade --autoremove unstable
+
+# Add user to group
+
+sudo /usr/sbin/sbuild-adduser $(whoami)
+
+# Configurations
+
+vi ~/.gbp.conf
+
+```
+[DEFAULT]
+builder = sbuild
+ignore-branch = True
+no-create-orig = True
+[buildpackage]
+export-dir = ../build-area/
+```
+
+#vi ~/.sbuildrc
+mkdir -p ~/.config/sbuild/
+vi ~/.config/sbuild/config.pl
+
+```
+$chroot_mode = 'unshare';
+$unshare_tmpdir_template = '/dev/shm/tmp.sbuild.XXXXXXXXXX';
+$clean_source = 0;
+$build_source = 1;
+$run_lintian = 1;
+$run_piuparts = 1;
+$run_autopkgtest = 1;
+$autopkgtest_root_args = '';
+$autopkgtest_opts = [ '--apt-upgrade', '--', 'unshare', '--release', '%r', '--arch', '%a' ];
+$distribution = 'unstable';
+$key_id = '0123456789ABCDEF';
+```
+
+vi ~/.profile
+
+```
+export DEBFULLNAME=*
+export DEBEMAIL=*
+```
+
+# Build with extra repository
+
+sbuild --extra-repository='deb http://deb.debian.org/debian experimental main'
+
+

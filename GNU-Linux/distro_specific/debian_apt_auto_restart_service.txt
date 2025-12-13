@@ -1,0 +1,5 @@
+sudo vi /etc/needrestart/needrestart.conf
+
+```
+$nrconf{restart} = 'a';
+```

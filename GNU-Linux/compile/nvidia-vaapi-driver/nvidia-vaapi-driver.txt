@@ -1,0 +1,29 @@
+tar -xf ./nvidia-vaapi-driver-*.tar.gz
+cd ./nvidia-vaapi-driver-*/
+
+meson setup ./build/
+ninja -C ./build/
+meson install -C ./build/
+
+# export if needed
+
+export LIBVA_DRIVERS_PATH=*/dri/
+export LIBVA_DRIVER_NAME=nvidia
+export NVD_BACKEND=egl
+export NVD_BACKEND=direct
+export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+
+# To debug
+
+export NVD_LOG=1
+export NVD_GPU=0
+
+export MOZ_LOG="FFmpegVideo:5"
+export MOZ_LOG="Dmabuf:5"
+
+# set nvidia-drm and update initramfs if needed
+
+sudo vi /etc/modprobe.d/eipifun.conf
+
+# options nvidia-drm modeset=1
+

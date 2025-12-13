@@ -1,0 +1,22 @@
+# Install
+
+opi codecs
+
+# dup
+
+sudo zypper dup --allow-vendor-change
+
+# List
+
+zypper search --installed-only --repo Packman
+
+# Remove packages from Packman
+
+for i in $(zypper search -i --repo Packman|cut -d '|' -f 2);do sudo zypper remove --clean-deps $i;done
+for i in $(zypper search --installed-only --repo Packman|awk '{print $3}');do sudo zypper remove --clean-deps $i;done
+
+# Remove or disable repo
+
+sudo rm /etc/zypp/repos.d/packman.repo
+sudo vi /etc/zypp/repos.d/packman.repo
+

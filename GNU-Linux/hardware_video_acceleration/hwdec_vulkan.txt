@@ -1,0 +1,16 @@
+# Environmental variables, intel
+
+export ANV_DEBUG=video-decode,video-encode
+
+# Environmental variables, AMD
+
+export RADV_PERFTEST=video_decode,video_encode
+
+vi ~/.config/mpv/mpv.conf
+
+```
+vo=gpu-next
+gpu-api=vulkan
+hwdec=vulkan
+```
+

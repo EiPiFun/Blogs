@@ -1,0 +1,89 @@
+sudo sed --expression='s|^mirrorlist=|#mirrorlist=|g' --expression='s|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.aliyun.com/rockylinux|g' /etc/yum.repos.d/[Rr]ocky*.repo -i.bak
+
+sudo dnf install epel-release epel-next-release
+rpmfusion-free-release
+# Manually install "rpmfusion-free-release" and "rpmfusion-nonfree-release"
+
+sudo dnf install kernel-headers kernel-devel
+sudo dnf install dkms
+
+sudo dnf makecache
+sudo dnf update
+
+# Reboot to new kernel
+
+# Install NVIDIA driver
+
+# Check driver version
+ls /usr/src | grep nvidia
+
+sudo dkms install nvidia/*
+
+# Optional and risky below:
+
+# Raise priority of Rocky repos first
+
+# Add Fedora 34 repo
+
+sudo vi/etc/yum.repos.d/fedora-repos.repo
+
+# [fedora]
+# name=Fedora 34 Repo
+# baseurl=https://mirrors.aliyun.com/fedora/releases/34/Everything/$basearch/os/
+# enabled=0
+# gpgcheck=0
+# repo_gpgcheck=0
+# priority=99
+# 
+# [fedora-modular]
+# name=Fedora 34 Modular Repo
+# baseurl=https://mirrors.aliyun.com/fedora/releases/34/Modular/$basearch/os/
+# enabled=0
+# gpgcheck=0
+# repo_gpgcheck=0
+# priority=99
+# 
+# [fedora-updates]
+# name=Fedora 34 Updates Repo
+# baseurl=https://mirrors.aliyun.com/fedora/updates/34/Everything/$basearch/
+# enabled=0
+# gpgcheck=0
+# repo_gpgcheck=0
+# priority=99
+#
+# [fedora-updates-modular]
+# name=Fedora 34 Updates Modular Repo
+# baseurl=https://mirrors.aliyun.com/fedora/updates/34/Modular/$basearch/
+# enabled=0
+# gpgcheck=0
+# repo_gpgcheck=0
+# priority=99
+
+# Add CentOS repo
+
+sudo vi/etc/yum.repos.d/centos-repos.repo
+
+# [centos-baseos]
+# name=CentOS Stream BaseOS Repo
+# baseurl=https://mirrors.aliyun.com/centos-stream/$releasever-stream/BaseOS/$basearch/os/
+# enabled=0
+# gpgcheck=0
+# repo_gpgcheck=0
+# priority=99
+# 
+#
+# [centos-appstream]
+# name=CentOS Stream AppStream Repo
+# baseurl=https://mirrors.aliyun.com/centos-stream/$releasever-stream/AppStream/$basearch/os/
+# enabled=0
+# gpgcheck=0
+# repo_gpgcheck=0
+# priority=99
+# 
+# [centos-crb]
+# name=CentOS Stream CRB Repo
+# baseurl=https://mirrors.aliyun.com/centos-stream/$releasever-stream/CRB/$basearch/os/
+# enabled=0
+# gpgcheck=0
+# repo_gpgcheck=0
+# priority=99

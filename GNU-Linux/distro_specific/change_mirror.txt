@@ -1,0 +1,7 @@
+/etc/yum.repos.d/
+
+/etc/zypp/services.d/
+/usr/share/zypp/local/service/openSUSE/repo/
+
+/etc/apt/sources.list
+

@@ -1,0 +1,2 @@
+# Remove all alternatives of a certain name
+sudo update-alternative --remove-all *

@@ -1,0 +1,37 @@
+https://docs.gtk.org/gtk4/running.html
+
+# GSK renderer
+# Software rendering: cairo
+# Legacy OpenGL: gl
+# OpenGL: ngl
+# Vulkan: vulkan
+# Debug: help
+
+export GSK_RENDERER=ngl
+export GSK_RENDERER=vulkan
+
+# GSK renderer debug
+
+export GSK_DEBUG=renderer
+
+export GDK_DEBUG=opengl
+export GDK_DEBUG=vulkan
+
+# GDK_DISABLE
+# gl, glx, vulkan
+
+export GDK_DISABLE=gl
+export GDK_DISABLE=vulkan
+
+# GDK backend
+# wayland, x11
+
+export GDK_BACKEND=wayland
+
+
+# dmabuf debug
+
+export GDK_DEBUG=dmabuf
+export GDK_DISABLE=dmabuf
+
+

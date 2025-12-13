@@ -1,0 +1,11 @@
+# update Python3 for CentOS 7
+sudo yum install centos-release-scl
+# Install and configure Python 3.8 as example
+sudo yum install rh-python38
+
+# Create links
+for i in python3.8 pip3.8;do sudo ln -s /opt/rh/rh-python3.8/root/bin/$i /usr/bin/$i;done
+
+# Use new version as default
+for i in python3 pip3 pip;do sudo mv /usr/bin/$i /usr/bin/$i-3.6;done
+for i in python3 pip3 pip;do sudo ln -s /opt/rh/rh-python3.8/root/bin/$i /usr/bin/$i;done

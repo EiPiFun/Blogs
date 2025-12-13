@@ -1,0 +1,16 @@
+# upgrade open kernel module flavor:
+
+sudo apt upgrade nvidia-open nvidia-driver-libs:i386 --autoremove --purge
+
+# upgrade proprietary kernel module flavor:
+
+sudo apt upgrade cuda-drivers nvidia-driver-libs:i386 --autoremove --purge
+
+# downgrade open kernel module flavor:
+
+sudo apt install nvidia-open nvidia-driver-libs:i386 --automemove --purge
+
+# downgrade proprietary kernel module flavor:
+
+sudo apt install cuda-drivers nvidia-driver-libs:i386 --automemove --purge
+

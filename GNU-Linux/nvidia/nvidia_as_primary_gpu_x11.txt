@@ -1,0 +1,16 @@
+# Reference: https://docs.fedoraproject.org/en-US/quick-docs/set-nvidia-as-primary-gpu-on-optimus-based-laptops/
+
+# Set nvidia as primary gpu on optimus system (x11 only)
+
+sudo vi /etc/X11/xorg.conf.d/nvidia_as_primary_gpu_x11.conf
+# Or: sudo vi /usr/share/X11/xorg.conf.d/nvidia_as_primary_gpu_x11.conf
+
+```
+Section "OutputClass"
+        Identifier "nvidia"
+        MatchDriver "nvidia-drm"
+        Driver "nvidia"
+        Option "PrimaryGPU" "yes"
+EndSection
+```
+

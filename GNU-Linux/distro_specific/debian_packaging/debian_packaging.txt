@@ -1,0 +1,71 @@
+# To generate an entry of new changelog, use dch -i
+
+# To generate a patch, use dpkg-source --commit
+
+# Add extra packages not available in debian by --extra-package=/home/foo/ or --extra-package=/home/foo/foo.deb
+
+# Repo directly based upstream, just modify and commit
+
+# From dsc
+
+dget https://ftp.debian.org/debian/pool/main/libd/libdata-validate-domain-perl/libdata-validate-domain-perl_0.10-1.1.dsc
+gbp import-dsc --pristine-tar ./libdata-validate-domain-perl_0.10-1.1.dsc
+cd ./libdata-validate-domain-perl/
+uscan --force-download
+gbb import-orig --pristine-tar --uscan
+
+# Repo using pristine-tar
+
+git clone git@salsa.debian.org:EiPiFun/nvidia-vaapi-driver.git;cd ./nvidia-vaapi-driver
+git checkout upstream
+git checkout pristine-tar
+git checkout master
+uscan --force-download
+gbp import-orig --pristine-tar ../nvidia-vaapi-driver_0.0.14.org.tar.gz
+
+
+# Build procedures, nvidia-vaapi-driver as an example
+
+mkdir ../build-area/
+rm -rf ../build-area/*
+rm ../*.orig.tar.*
+uscan --force-download
+cp ../nvidia-vaapi-driver_0.0.12.orig.tar.gz ../build-area/
+gbp buildpackage
+
+# LXQT
+
+export PACKAGE_NAME=feathernotes;export PACKAGE_VERSION=1.3.0;
+
+git clone git@salsa.debian.org:lxqt-team/$PACKAGE_NAME.git;cd ./$PACKAGE_NAME
+git checkout upstream/latest
+git checkout pristine-tar
+git checkout debian/sid
+uscan --force-download
+gbp import-orig --pristine-tar ../$PACKAGE_NAME'_'$PACKAGE_VERSION.orig.tar.xz;
+
+mkdir ../build-area/
+rm -rf ../build-area/*
+rm ../*.orig.tar.*
+uscan --force-download
+cp ../$PACKAGE_NAME'_'$PACKAGE_VERSION.orig.tar.xz ../build-area/
+gbp buildpackage
+
+# Push all
+
+git push --set-upstream origin --all
+git push --set-upstream origin --tags
+
+# Python packages, tools from openstack-pkg-tools
+
+pkgos-debpypi
+
+# Rust packages
+
+debcargo
+
+# Upload to mentor
+
+dput mentor your_sourcepackage_1.0.changes
+
+

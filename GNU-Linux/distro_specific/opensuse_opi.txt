@@ -1,0 +1,16 @@
+sudo zypper install opi
+
+# List
+
+opi
+
+# Install
+
+opi codecs
+
+opi vscode
+
+opi chrome
+
+opi msedge
+

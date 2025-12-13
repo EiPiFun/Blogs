@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=stop easyconnect
+Exec=/usr/bin/sh /home/eipifun/Documents/docker/stop_easyconnect.sh
+Terminal=true

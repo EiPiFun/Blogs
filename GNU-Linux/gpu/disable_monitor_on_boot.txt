@@ -1,0 +1,23 @@
+# Find the monitor name
+
+ls -d /sys/class/drm/card[0-9]-*/
+
+# The internal monitor of laptop is usually named as eDP-1 or LVDS-1
+
+# Append to grub, eDP-1 as an example
+
+sudo vi /etc/default/grub
+
+```
+video=eDP-1:d video=LVDS-1:d
+```
+
+# Update grub
+
+# Check
+
+cat /sys/class/drm/card[0-9]-*/enabled
+cat /sys/class/drm/card[0-9]-*/status
+
+# Optional to disable internal gpu if external monitor is connected to discrete gpu
+

@@ -1,0 +1,3 @@
+# Put color scheme file in $HOME/.config/qterminal.org/color-schemes/
+
+

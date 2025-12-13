@@ -1,0 +1,67 @@
+# Reference: https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/version-locking.html
+
+# dnf
+
+sudo dnf versionlock add '*nvidia*580*'
+
+# dnf manually
+
+sudo  /etc/dnf/versionlock.toml
+
+```
+version = 1.0
+
+[[package]]
+name = '*nvidia*'
+[[package.conditions]]
+key = 'evr'
+comparator = '>='
+value = '3:580'
+[[package.conditions]]
+key = 'evr'
+comparator = '<'
+value = '3:585'
+
+# dnf check
+
+dnf search --showduplicates nvidia-driver
+
+# zypper
+
+sudo zypper addlock '*nvidia* <= 580'
+
+# zypper manually
+
+sudo nano /etc/zypp/locks
+
+```
+type: package
+version: <= 580
+match-type: glob
+case_sensitive: on
+solvable_name: *nvidia*
+```
+
+# zypper check
+
+zypper search --details nvidia-driver
+
+# apt, if using cuda repo
+
+sudo apt install --purge nvidia-driver-pinning-580
+
+# apt manually
+
+sudo vi /etc/apt/preferences.d/nvidia_driver_from_cuda_repo
+
+
+```
+Package: src:*nvidia*:any src:cuda-drivers:any src:cuda-compat:any
+Pin: version 580.*
+Pin-Priority: 1000
+```
+
+# apt check
+
+apt-cache policy nvidia-driver
+

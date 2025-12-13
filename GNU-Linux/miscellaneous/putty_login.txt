@@ -1,0 +1,1 @@
+putty -load "configuration name" -l username -pw password

@@ -1,0 +1,12 @@
+sudo nano /etc/sysconfig/network-scripts/ifcfg-ib*
+
+# DEVICE=ib*
+# BOOTPROTO=static
+# IPADDR=1.0.0.1
+# NETMASK=255.255.255.0
+# NETWORK=1.0.0.0
+# BROADADT=1.0.0.255
+# NM_CONTROLLED=yes
+# TYPE=InfiniBand
+# ONBOOT=yes
+# ZONE=public

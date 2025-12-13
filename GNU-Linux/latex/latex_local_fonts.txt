@@ -1,0 +1,10 @@
+\setCJKfamilyfont{zhfs}   {FangSong} [Path = thesis_fonts/sim/, Extension = .ttf, UprightFont = simfang, AutoFakeBold={\FakeBoldSize}]
+\setCJKfamilyfont{zhhei}  {SimHei}   [Path = thesis_fonts/sim/, Extension = .ttf, UprightFont = simhei , AutoFakeBold={\FakeBoldSize}]
+\setCJKfamilyfont{zhkai}  {KaiTi}    [Path = thesis_fonts/sim/, Extension = .ttf, UprightFont = simkai , AutoFakeBold={\FakeBoldSize}]
+\setCJKfamilyfont{zhsong} {SimSun}   [Path = thesis_fonts/sim/, Extension = .ttc, UprightFont = simsun , AutoFakeBold={\FakeBoldSize}]
+
+\setCJKmainfont{FangSong}[Path = thesis_fonts/sim/, Extension = .ttf, UprightFont = simfang,  AutoFakeBold={\FakeBoldSize}]
+
+\setmainfont{Times New Roman}[Path = thesis_fonts/times/, Extension = .ttf, UprightFont = times, BoldFont = timesbd, ItalicFont = timesi, BoldItalicFont = timesbi]
+
+

@@ -1,0 +1,18 @@
+# Install fcitx-gtk/ibus-gtk/fcitx5-gtk and fcitx-qt/ibus-qt/fcitx5-qt if needed
+# May specify version like fcitx5-gtk4
+# Install graphical config tool if needed
+
+sudo vi /etc/environment
+
+INPUT_METHOD=fcitx|ibus|fcitx5
+GTK_IM_MODULE=fcitx|ibus|fcitx5
+QT_IM_MODULE=fcitx|ibus|fcitx5
+XMODIFIERS=@im=fcitx|ibus|fcitx5
+
+vi ~/.bash_profile
+
+export INPUT_METHOD=fcitx|ibus|fcitx5
+export GTK_IM_MODULE=fcitx|ibus|fcitx5
+export QT_IM_MODULE=fcitx|ibus|fcitx5
+export XMODIFIERS=@im=fcitx|ibus|fcitx5
+

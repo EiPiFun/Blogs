@@ -1,0 +1,21 @@
+# Primary GPU on Xorg
+
+Ubuntu support
+openSUSE support
+Fedora/RHEL only if GNOME
+Debian not support
+
+# PRIME offload on Xorg
+
+Ubuntu support
+openSUSE support
+Fedora/RHEL only if GNOME
+Debian only of gnome-shell, not stable
+
+# PRIME offload on Wayland
+
+Ubuntu support
+openSUSE support
+Fedora/RHEL only if GNOME
+Debian only of gnome-shell
+

@@ -1,0 +1,4 @@
+# rndis is blacklisted by default
+
+sudo modprobe rndis_host
+

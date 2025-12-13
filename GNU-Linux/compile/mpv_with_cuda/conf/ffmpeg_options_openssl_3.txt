@@ -1,0 +1,12 @@
+--enable-gpl
+--enable-opengl
+--enable-version3
+--enable-openssl
+--enable-libdrm
+--enable-vulkan
+--disable-vaapi
+--disable-vdpau
+--enable-ffnvcodec
+--enable-nvdec
+--disable-nvenc
+--enable-cuda-llvm

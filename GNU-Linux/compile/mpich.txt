@@ -1,0 +1,23 @@
+# mpich download address, version 4.1.3 as an example
+
+https://www.mpich.org/static/downloads/4.1.3/mpich-4.1.3.tar.gz
+
+# to build
+
+tar -xf ./mpich-*.tar.gz
+cd ./mpich-*
+
+mkdir ./build/
+
+cd ./build/
+
+# python 3 is required to generate F90 and F08 bindings
+# mpi-cxx is deprecated
+# optional: --with-slurm, --with-device=ch4:ucx, --with-device=ch4:ofi
+# prefer ucx rather than libfabric
+
+export MPICH_PREFIX=*
+
+../configure --prefix=$MPICH_PREFIX --libdir=$MPICH_PREFIX/lib64/ --enable-fortran --disable-f90 --disable-f08 --disable-cxx --enable-romio --with-pm=hydra --with-hwloc=embedded --with-libfabric=embedded --with-ucx=embedded --with-yaksa=embedded --without-cuda --without-ze --without-hip
+
+make install -j

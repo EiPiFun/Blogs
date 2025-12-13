@@ -1,0 +1,55 @@
+# Linux Distributions supporting Wayland and shortages
+
+Ubuntu;
+Debian; hardware support, NVIDIA PRIME
+openSUSE;
+Fedora; repo, NVIDIA PRIME
+RedHat; repo, NVIDIA PRIME
+
+# Install NVIDIA Graphics Driver higher than version 525
+# Change NVIDIA PRIME Profiles to "NVIDIA"
+
+# Speficify GBM_BACKEND
+
+export GBM_BACKEND=nvidia-drm
+
+gsettings set org.gnome.mutter experimental-features [\"kms-modifiers\"]
+
+# Install xwayland libxcb egl-wayland
+
+# Install gnome session for wayland if needed
+
+sudo vi /etc/modprobe.d/eipifun.conf
+
+# suspend problem maybe caused by NVreg_PreserveVideoMemoryAllocations
+
+# cuda usage including nvdec and nvidia-vaapi-driver may cause suspend problems
+# prefer vulkan or vdpau for hardware video decoding
+
+```
+blacklist nouveau
+options nvidia-drm modeset=1 fbdev=1
+options nvidia NVreg_TemporaryFilePath=/var/tmp/
+options nvidia NVreg_PreserveVideoMemoryAllocations=1
+```
+
+# Check parameters
+
+cat /proc/driver/nvidia/params | sort
+
+sudo vi /etc/gdm(3)/custom.conf (or, daemon.conf)
+
+```
+WaylandEnable=true
+```
+
+sudo vi /usr/lib/udev/rules.d/61-gdm.rules
+# Find codes about "nvidia", "prefer_xorg" and "disable_wayland"
+
+sudo systemctl enable nvidia-hibernate nvidia-resume nvidia-suspend
+
+# Update initramfs
+
+# Reboot
+echo $XDG_SESSION_TYPE
+# Check if output is "wayland"

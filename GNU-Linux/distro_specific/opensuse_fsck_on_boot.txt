@@ -1,0 +1,3 @@
+# openSUSE does not execute fsck on boot by default
+
+

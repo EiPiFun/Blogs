@@ -1,0 +1,22 @@
+# openmpi download address, version 4.1.6 as an example
+
+https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz
+
+# to build
+
+tar -xf ./openmpi-*.tar.gz
+cd ./openmpi-*
+
+mkdir ./build/
+
+cd ./build/
+
+# mpi-cxx is deprecated
+# optional: --with-slurm (enabled by default)
+# --without-verbs reference: https://www.open-mpi.org/faq/?category=openfabrics#ofa-device-error
+
+export OPENMPI_PREFIX=*
+
+../configure --prefix=$OPENMPI_PREFIX --libdir=$OPENMPI_PREFIX/lib64/ --enable-mpi-fortran --disable-mpi-cxx --disable-mpi-java --disable-oshmem --with-hwloc=internal --with-libevent=internal --with-pmix=internal --with-prrte=internal --without-verbs --without-ofi --without-ucc --without-ucx --without-cuda --without-rocm --with-package-string="EiPiFun OpenMPI"
+
+make install -j
