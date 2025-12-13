@@ -1,0 +1,6 @@
+sudo vi /etc/ssh/sshd_config
+
+# PermitRootLogin no
+# PermitRootLogin prohibit-password
+
+

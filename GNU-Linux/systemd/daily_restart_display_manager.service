@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily Restart Display Manager
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl restart gdm
+ExecReload=/usr/bin/systemctl restart gdm
+ExecStop=/usr/bin/systemctl restart gdm
+

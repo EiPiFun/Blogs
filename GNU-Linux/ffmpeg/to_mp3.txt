@@ -1,0 +1,2 @@
+ffmpeg -i input.extension -b:a 192k output.mp3
+

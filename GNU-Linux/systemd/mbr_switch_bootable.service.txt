@@ -1,0 +1,10 @@
+[Unit]
+Description=mbr switch bootable
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh -c '/usr/bin/echo -e "\na\n2\na\n3\nw\n"|/usr/sbin/fdisk /dev/sda;/usr/sbin/grub-install /dev/sda'
+
+[Install]
+WantedBy=multi-user.target

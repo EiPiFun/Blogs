@@ -1,0 +1,76 @@
+RedHat|SUSE|Debian
+
+git
+
+gcc
+gcc-c++/g++
+
+make
+yasm/nasm
+meson
+autoconf
+automake
+libtool
+libatomic/libatomic1/libatomic1
+
+pkgconf
+
+openssl-devel/libopenssl-3-devel/libssl-dev
+
+lcms2-devel/liblcms2-devel/liblcms2-dev
+
+ffnvcodec
+
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
+export PKG_CONFIG_PATH
+
+# Optional:
+# libvdpau-devel/libvdpau-dev
+# libva-devel/libva-dev
+
+libdrm-devel/libdrm-dev
+mesa-libgbm-devel/libgbm-devel/libgbm-dev
+
+mesa-libGL-devel/Mesa-libGL-devel/libgl-dev
+mesa-libEGL-devel/Mesa-libEGL-devel/libegl-dev
+
+# Optional:
+# vulkan-loader-devel/vulkan-devel/libvulkan-dev
+# vulkan-tools
+# glslang-devel/glslang-dev
+
+libX11-devel/libx11-dev
+libXScrnSaver-devel/libXss-devel/libxss-dev
+libXext-devel/libxext-dev
+libXinerama-devel/libxinerama-dev
+libXpresent-devel/libxpresent-dev
+libXrandr-devel/libxrandr-dev
+libXfixes-devel/libxfixes-dev
+libXrender-devel/libxrender-dev
+
+# Optional:
+# wayland-devel/libwayland-dev
+# wayland-protocols-devel/wayland-protocols
+# libxkbcommon-devel/libxkbcommon-dev
+
+alsa-lib-devel/alsa-devel/libasound2-dev
+
+# Optional:
+# pipewire-devel/libpipewire-0.3-dev
+# pulseaudio-libs-devel/libpulse-devel/libpulse-dev
+
+harfbuzz-devel/libharfbuzz-dev
+fribidi-devel/libfribidi-dev
+freetype-devel/freetype2-devel/libfreetype-dev
+fontconfig-devel/libfontconfig-dev
+
+# Optional, for spirv:
+# libshaderc-devel/shaderc-devel/libshaderc-dev
+
+# Optional, for GUI support:
+# compat-lua-devel/lua51-devel/liblua5.2-dev
+
+# Or build Celluliod for better GUI.
+
+LD_LIBRARY_PATH=/usr/local/lib/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH

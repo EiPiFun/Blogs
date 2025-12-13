@@ -1,0 +1,31 @@
+# Reference: https://wiki.archlinux.org/title/Power_management
+# 0 — to use the globally configured value
+# 1 — to do not touch the current configuration
+# 2 — to globally disable power-saving
+# 3 — to globally enable power-saving
+
+# NetworkManager wifi disable powersave for all connections
+
+sudo vi /etc/NetworkManger/conf.d/eipifun.conf
+
+```
+[connection]
+wifi.powersave=2
+```
+
+# Disable powersave for a specific connections
+
+nmcli connection modify $CONNECTION_ID wifi.powersave 2
+
+sudo vi /etc/etc/NetworkManager/system-connections/$CONNECTION_ID.nmconnection
+
+```
+[wifi]
+powersave=2
+```
+
+# Apply
+
+sudo nmcli connection reload
+
+

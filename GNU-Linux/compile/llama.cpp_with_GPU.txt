@@ -1,0 +1,21 @@
+# Reference: https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md
+
+# Extract
+
+tar xf ./llamp.cpp*.tar.gz
+cd ./llamp.cpp*/
+mkdir ./build && cd ./build
+
+# CUDA
+
+cmake -DGGML_CUDA=on -DCMAKE_CUDA_ARCHITECTURES="60;75" -DCMAKE_INSTALL_PREFIX=$HOME/software/llama.cpp/ -DLLAMA_CURL=off -B ./build/ ..
+
+# Build with parallel
+
+cmake --build ./build/ --config Release --parallel
+
+# Install
+
+cmake --install ./build/
+
+

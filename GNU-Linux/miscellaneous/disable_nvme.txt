@@ -1,0 +1,22 @@
+# blacklist
+
+lsmod | grep nvme
+
+sudo vi /etc/modprobe.d/eipifun.conf
+
+```
+blacklist nvme-auth
+blacklist nvme-core
+blacklist nvme-fabrics
+blacklist nvme-keyring
+blacklist nvme
+```
+
+# Then update initramfs
+
+# or, by grub
+
+sudo vi /etc/default/grub
+
+# Append "initcall_blacklist=nvme_init" to GRUB_CMDLINE_LINUX
+

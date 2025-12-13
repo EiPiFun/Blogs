@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=NetEase Cloud Music
+Exec=/usr/bin/sh -c 'export QT_QPA_PLATFORM=xcb;/homex/home1/software/netease-cloud-music/NetEase_Cloud_Music-1.2.0.3-2-x86_64.AppImage'
+Terminal=false
+Icon=/homex/home1/software/netease-cloud-music/netease-cloud-music.svg

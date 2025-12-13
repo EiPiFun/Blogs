@@ -1,0 +1,10 @@
+# Check datetime first
+
+sudo scontrol update NodeName=* State=DOWN Reason=hung_completing
+
+sudo systemctl restart slurmctld
+
+sudo systemctl restart slurmd
+
+sudo scontrol update NodeName=* State=RESUME
+

@@ -1,0 +1,38 @@
+# Reference: https://wiki.archlinux.org/title/Power_management
+
+# Disable usb autosuspend for all usb devices
+
+sudo vi /etc/modprobe.d/eipifun.conf
+
+```
+options usbcore autosuspend=-1
+```
+
+# Update initramfs
+
+# Check
+
+cat /sys/module/usbcore/parameters/autosuspend
+
+# Or disable usb autosuspend except for some devices
+
+# Find the excepted device name
+
+lsusb
+
+# Disable, with Mouse, Keyboard and Network Card excepted as an example
+
+sudo vi /etc/udev/rules.d/usb_disable_autosuspend_for_certain_devices.rules
+
+```
+ACTION=="add", SUBSYSTEM=="usb",  ATTR{product}="*Mouse",  ATTR{product}="*Keyboard",  ATTR{product}="*NIC",  ATTR{product}="*Adapater", TEST=="power/control", ATTR{power/control}="on"
+ACTION=="add", SUBSYSTEM=="usb",  ATTR{product}="*Mouse",  ATTR{product}="*Keyboard",  ATTR{product}="*NIC",  ATTR{product}="*Adapater", TEST=="power/autosuspend", ATTR{power/autosuspend}="-1"
+ACTION=="add", SUBSYSTEM=="usb", ATTR{product}!="*Mouse", ATTR{product}!="*Keyboard", ATTR{product}!="*NIC", ATTR{product}!="*Adapater", TEST=="power/control", ATTR{power/control}="auto"
+ACTION=="add", SUBSYSTEM=="usb", ATTR{product}!="*Mouse", ATTR{product}!="*Keyboard", ATTR{product}!="*NIC", ATTR{product}!="*Adapater", TEST=="power/autosuspend", ATTR{power/autosuspend}="2"
+```
+
+# Check
+
+cat /sys/bus/usb/devices/*/power/autosuspend
+
+

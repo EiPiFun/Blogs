@@ -1,0 +1,14 @@
+# Reference: https://wiki.archlinux.org/title/Steam
+
+# Format a partition as UDF instead of the whole disk is not supported on Windows or Mac
+
+# The UDF block size must match the logical sector size of the partition.
+# This value can be obtained using blockdev.
+
+sudo blockdev --getss /dev/sdz99
+
+# Linux lacks write support for revisions 2.50 and higher.
+# Therefore, revision 2.01 is required for proper functionality.
+
+sudo mkfs.udf --utf8 --label= --blocksize=$(sudo blockdev --getss /dev/sdz99) --media-type=hd --udfrev=0x0201 /dev/sdz99
+

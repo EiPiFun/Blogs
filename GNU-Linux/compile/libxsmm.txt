@@ -1,0 +1,14 @@
+# Unzip
+
+tar -xf .../libxsmm-*.tar.gz
+
+cd .../libxsmm-*/
+
+# replace pthread_yield to sched_yield
+
+sed -e "s|pthread_yield|sched_yield|g" -i .../libxsmm-*/include/libxsmm_sync.h
+
+make test STATIC=0 PREFIX=* BLAS=0 AVX=0 -j
+
+make STATIC=0 PREFIX=* BLAS=0 AVX=0 -j
+

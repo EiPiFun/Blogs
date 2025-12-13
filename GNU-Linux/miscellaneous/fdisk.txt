@@ -1,0 +1,7 @@
+sudo fdisk /dev/sda
+
+g
+
+n
+
+w

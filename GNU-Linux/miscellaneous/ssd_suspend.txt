@@ -1,0 +1,12 @@
+# Deal with ssd suspend problem
+# Append kernel parameter
+
+sudo vi /etc/default/grub
+
+```
+iommu=soft
+```
+
+# Update grub
+# Reboot
+

@@ -1,0 +1,61 @@
+# Reference:
+# https://wiki.ubuntu.com/PbuilderHowto
+
+# Install pbuilder debootstrap devscripts git-buildpackage quilt
+# which are provided in Fedora, openSUSE, and of course, Debian and Ubuntu
+# perl-File-DirList/File::DirList/libfile-dirlist-perl and perl-File-Touch/libfile-touch-perl is is needed for uscan
+# Install debian-archive-keyring, or extract the deb to get the /usr/share/keyrings/debian-archive-keyring.gpg
+
+# Install fakeroot debhelper dput dget, if needed, which are provided in Fedora, openSUSE, Debian and Ubuntu
+
+# Create base build environment
+
+sudo pbuilder create --basetgz /srv/pbuilder/unstable-pbuilder/unstable-base.tgz --distribution unstable --mirror http://ftp.debian.org/debian/
+
+# To upgrade
+
+sudo pbuilder update --basetgz /srv/pbuilder/unstable-pbuilder/unstable-base.tgz --distribution unstable --mirror http://ftp.debian.org/debian/
+
+# To configure
+
+sudo pbuilder --login --save-after-login
+
+# Configurations
+
+# Add hooks, copy directly or extract them from deb
+
+sudo cp /usr/share/doc/pbuilder/examples/B20autopkgtest /srv/pbuilder/hooks/
+sudo cp /usr/share/doc/pbuilder/examples/B90lintian /srv/pbuilder/hooks/
+
+vi ~/.gbp.conf
+
+```
+[DEFAULT]
+builder = pdebuild
+ignore-branch = True
+no-create-orig = True
+[buildpackage]
+export-dir = ../build-area/
+```
+
+vi ~/.pbuilderrc
+# vi /etc/pbuilderrc
+
+```
+HOOKDIR="/srv/pbuilder/hooks/"
+DISTRIBUTION="unstable"
+BASETGZ="/srv/pbuilder/unstable-pbuilder/unstable-base.tgz"
+BUILDRESULT="/srv/pbuilder/unstable-pbuilder/result/"
+APTCACHE="/srv/cache/pbuilder/unstable-pbuilder/aptcache/"
+BUILDPLACE="/srv/cache/pbuilder/unstable-pbuilder/build/"
+```
+
+# Generate dsc file
+
+dpkg-source -b .
+
+# Build
+
+sudo pbuilder build *.dsc
+
+

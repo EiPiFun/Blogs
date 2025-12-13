@@ -1,0 +1,21 @@
+sudo zypper install --no-recommends *
+
+sudo zypper remove --clean-deps *
+
+sudo zypper update --no-recommends --auto-agree-with-licenses -y
+
+sudo zypper dup --no-recommends --auto-agree-with-licenses -y
+
+sudo vi /etc/zypp/zypp.conf
+
+```
+solver.cleandepsOnRemove = true
+```
+
+sudo vi /etc/zypp/zypper.conf
+
+```
+installRecommends = no
+```
+
+

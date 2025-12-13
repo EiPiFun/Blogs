@@ -1,0 +1,15 @@
+# blacklist nouveau first
+
+# Install, try --no-opengl-files first
+# Optional:  --kernel-module-only --no-dkms
+# Install pkgconf and libglvnd-devel/libglvnd-dev if opengl-files
+
+chmod a+x ./NVIDIA-Linux-*.run
+
+sudo ./NVIDIA-Linux-*.run --no-x-check --no-nouveau-check --no-wine-files --no-opengl-files --dkms
+
+# Uninstall
+
+sudo nvidia-uninstall
+
+

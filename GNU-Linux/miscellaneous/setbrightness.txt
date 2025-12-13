@@ -1,0 +1,39 @@
+#!/usr/bin/sh
+
+brightness_directory=none
+
+for i in intel_backlight acpi_video0;do
+if [ -f /sys/class/backlight/$i/max_brightness ];then
+max_brightness=$(cat /sys/class/backlight/$i/max_brightness)
+brightness_directory=$i
+break
+fi
+done
+
+if [ $brightness_directory = none ];then
+echo "No suitable device found"
+exit
+fi
+
+brightness=$(cat /sys/class/backlight/$brightness_directory/brightness)
+relative_brightness=$(($brightness*100 / $max_brightness))
+echo "$brightness_directory: $brightness/$max_brightness $relative_brightness% (now)"
+
+if [ $# -gt 0 ];then
+
+relative_brightness=$(($1*10 / 10))
+
+if [ $relative_brightness -gt 100 ];then
+relative_brightness=100
+else if [ $relative_brightness -lt 10 ];then
+relative_brightness=10;fi
+fi
+
+brightness=$(($relative_brightness*$max_brightness / 100))
+echo "$brightness_directory: $brightness/$max_brightness $relative_brightness% (to set)"
+
+su -c "echo $brightness > /sys/class/backlight/$brightness_directory/brightness"
+
+fi
+
+

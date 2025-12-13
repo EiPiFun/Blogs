@@ -1,0 +1,5 @@
+# Start DHCP process
+dhclient
+
+# Kill existing DHCP process
+dhclient -x

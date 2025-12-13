@@ -1,0 +1,19 @@
+# Run dockerized miktex
+
+sudo systemctl start docker
+
+sudo docker container stop miktex
+sudo docker container rm miktex
+
+sudo docker pull miktex/miktex:essential
+
+sudo docker run -ti --name miktex --rm -v miktex:/var/lib/miktex -v `pwd`:/miktex/work -e MIKTEX_UID=`id -u` miktex/miktex:essential
+
+miktex packages update
+
+pdflatex $filename
+
+# Word count
+
+texcount $filename
+

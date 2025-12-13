@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Chromium VK
+Exec=/usr/lib/chromium/chromium --ozone-platform-hint=auto --enable-zero-copy --enable-features=AcceleratedVideoEncoder,AcceleratedVideoDecoder,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE
+Terminal=false
+Icon=/homex/home1/software/chromium/chromium.png

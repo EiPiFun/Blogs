@@ -1,0 +1,10 @@
+# Disable Wayland, especially for remote control
+
+sudo vi /etc/gdm(3)/custom.conf (or, daemon.conf)
+
+
+```
+WaylandEnable=false
+```
+
+

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=QQ
+Exec=/home/eipifun/software/qq/linuxqq.AppImage --no-sandbox
+Terminal=false
+Icon=/home/eipifun/software/qq/qq.png

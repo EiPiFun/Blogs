@@ -1,0 +1,8 @@
+# Uninstall all packages
+
+pip uninstall -r -y <(pip freeze)
+
+# Uninstall all packages in user sites
+
+pip uninstall -r -y <(pip freeze --user)
+

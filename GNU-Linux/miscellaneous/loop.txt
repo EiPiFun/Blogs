@@ -1,0 +1,27 @@
+#!/usr/bin/sh
+
+index_array=(8190 8300 8310 8330 8400)
+
+window_size=2
+loop_number=$((${#index_array[@]}/$window_size))
+left_index_number=$((${#index_array[@]}-$window_size*$loop_number))
+
+for ((i=0;i<$loop_number;i++));do
+for ((j=0;j<$window_size;j++));do
+
+echo ${index_array[$(($i*$window_size+$j))]}
+
+done
+done
+
+if [ $left_index_number -gt 0 ];then
+
+for i in $loop_number;do
+for ((j=0;j<$left_index_number;j++));do
+
+echo ${index_array[$(($i*$window_size+$j))]}
+
+done
+done
+
+fi

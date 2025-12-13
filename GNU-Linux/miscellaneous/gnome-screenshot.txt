@@ -1,0 +1,6 @@
+gnome-screenshot --interactive
+
+gnome-screenshot --window
+
+gnome-screenshot
+

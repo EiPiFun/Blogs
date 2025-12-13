@@ -1,0 +1,4 @@
+# RedHat
+/usr/lib64/openmpi/
+# openSUSE
+/usr/lib64/mpi/gcc/openmpi4/

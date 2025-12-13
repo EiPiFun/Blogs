@@ -1,0 +1,27 @@
+# Install
+
+tar
+
+# Temp directory
+
+mkdir /dev/shm/temp/
+mkdir ./temp/
+
+# Help
+
+sh ./cuda_*.run --help
+
+# Extract if needed
+
+sh ./cuda_*.run --extract=$(realpath ./temp/)
+sh ./cuda_*.run --tar mxvf
+sh ./cuda_*.run -x
+
+# Install
+
+sh ./cuda_*.run --installpath=/homex/home1/public/software/cuda-11.8/ --tmpdir=/dev/shm/temp/ --override --no-drm --no-man-page --no-opengl-libs
+
+# Install silently
+
+sh ./cuda_*.run --installpath=/homex/home1/public/software/cuda-11.8/ --tmpdir=/dev/shm/temp/ --override --no-drm --no-man-page --no-opengl-libs --silent
+

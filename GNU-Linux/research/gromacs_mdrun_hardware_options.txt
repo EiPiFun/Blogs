@@ -1,0 +1,20 @@
+# Reference: https://developer.nvidia.com/blog/creating-faster-molecular-dynamics-simulations-with-gromacs-2020/
+
+-pin on
+-pinoffset
+
+-gpu_id
+
+-update gpu
+-nb gpu
+-bonded gpu
+-pme gpu
+
+-npme 1
+
+# OpenMP
+
+export OMP_NUM_THREADS=8
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+

@@ -1,0 +1,25 @@
+sudo apt remove --purge snapd*
+sudo apt remove --purge libreoffice*
+sudo apt autoremove
+sudo apt install fcitx5
+sudo apt install fcitx5-pinyin fcitx5-table
+sudo apt install fcitx5-config-qt
+
+sudo featherpad /etc/bluetooth/main.conf
+# AutoEnable=false
+
+# Enable "RTC is local time" or change Timezone in Date and time
+# Atlantic/Reykjavik
+
+# Switch Input Method to "fcitx"
+
+sudo featherpad /etc/default/grub.d/lubuntu-grub-theme.cfg
+# Comment "GRUB_THEME=/usr/share/grub/themes/lubuntu-grub-theme/theme.txt"
+
+# Recheck and install system updates
+# Reboot
+
+# Install additional drivers
+# Reboot
+
+# Change NVIDIA PRIME Profiles to "NVIDIA"

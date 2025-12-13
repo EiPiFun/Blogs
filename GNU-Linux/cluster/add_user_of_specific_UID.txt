@@ -1,0 +1,12 @@
+# Using toolz
+
+sudo groupadd -g $GID $GROUP_NAME
+
+sudo useradd -u $UID -g $GROUP_NAME $USER_NAME
+
+# Manually
+
+sudo vi /etc/group
+sudo vi /etc/passwd
+
+

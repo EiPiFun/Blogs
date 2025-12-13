@@ -1,0 +1,8 @@
+sudo vi /etc/network/interfaces
+
+# Comment contents in this file
+
+sudo vi /etc/NetworkManager/NetworkManager.conf
+
+# managed=true
+

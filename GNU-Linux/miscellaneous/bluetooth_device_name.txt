@@ -1,0 +1,4 @@
+bluetoothctl mgmt.info
+
+sudo bluetoothctl mgmt.name *
+

@@ -1,0 +1,20 @@
+# Install nfs
+
+sudo dnf install nfs-utils
+
+# Configure nfs
+
+sudo nano /etc/exports
+
+# /share_dir 	  #permitted_ip_address(rw,sync,no_subtree_check,no_root_squash)
+
+sudo systemctl enable nfs-server.service
+sudo systemctl start nfs-server
+sudo systemctl status nfs-server
+
+# Add firewall rule for nfs
+
+sudo firewall-cmd --add-service=mountd --permanent
+sudo firewall-cmd --add-service=nfs --permanent
+sudo firewall-cmd --add-service=rpc-bind --permanent
+sudo firewall-cmd --reload

@@ -1,0 +1,24 @@
+# Dependencies
+
+gstreamer1-devel/gstreamer-devel/libgstreamer1.0-dev
+
+# Install gstreamer-plugins-base first
+
+tar -xf ./gst-plugins-base-*.tar.gz
+cd ./gst-plugins-base-*/
+
+meson setup ./build/ --prefix=* -Dtests=disabled
+ninja -C ./build/
+meson install -C ./build/
+
+# export PKG_CONFIG_PATH for gstreamer-plugins-base if needed
+
+tar -xf ./gst-plugins-bad-*.tar.gz
+cd ./gst-plugins-bad-*/
+
+meson setup ./build/ --prefix=* -Dtests=disabled
+ninja -C ./build/
+meson install -C ./build/
+
+
+

@@ -1,0 +1,9 @@
+[Unit]
+Description=Hourly NetworkManager Restart
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl restart NetworkManager
+ExecReload=/usr/bin/systemctl restart NetworkManager
+ExecStop=/usr/bin/systemctl restart NetworkManager
+

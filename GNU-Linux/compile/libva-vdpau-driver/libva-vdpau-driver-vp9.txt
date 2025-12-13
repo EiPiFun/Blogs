@@ -1,0 +1,30 @@
+# Known issues: browser hardware video acceleration only works for patched chromium, neither chrome nor firefox
+
+# Install libX11-devel/libx11-dev, mesa-libGL-devel/Mesa-libGL-devel/libgl-dev+libglx-dev
+
+# Install libva-vdpau-driver-vp9 from xuanruiqi, do not use release
+
+tar -xf ./libva-vdpau-driver-*.tar.gz
+cd ./libva-vdpau-driver-*/
+
+./autogen.sh --enable-glx --prefix=*
+
+make install -j
+
+# remove link "nvidia_drv_video.so" if needed
+
+# export if needed
+
+export LIBVA_DRIVERS_PATH=*/dri/
+export LIBVA_DRIVER_NAME=vdpau
+
+# for patched chromium
+
+vi ~/.config/chromium-flags.conf
+
+# --use-gl=desktop
+# --use-vulkan
+# --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks
+# --disable-features=UseChromeOSDirectVideoDecoder 
+
+

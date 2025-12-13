@@ -1,0 +1,3 @@
+gnome-session
+gnome-classic-session
+gnome-session-flashback

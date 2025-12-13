@@ -1,0 +1,9 @@
+h264ify
+enhanced-h264ify
+Not yet, AV1
+
+(av1 or vp8+vp9 could also be disabled in about:config)
+(the website may also drop av1 if vp8+vp9 disabled)
+
+video downloadhelper
+

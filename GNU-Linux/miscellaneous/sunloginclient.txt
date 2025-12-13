@@ -1,0 +1,44 @@
+# sunlogin does not support wayland, xorg only
+# disable wayland if necessary
+
+# Dependency
+
+ncurses-compat-libs/libncurses5
+gconf
+
+# Edit
+
+sudo nano /usr/local/sunlogin/scripts/common.sh
+
+```
+os_name=centos
+os_version=9
+os_bits=64
+srv_type=systemd
+```
+
+```
+os_name=ubuntu
+os_version=22.04
+os_bits=64
+srv_type=systemd
+```
+
+# rpm only
+
+sudo bash /usr/local/sunlogin/rpminstall.sh
+
+# Reinstall rpm or deb
+
+suo cp /usr/local/sunlogin/scripts/runsunloginclient.service /etc/systemd/system/
+
+sudo systemctl enable runsunloginclient
+sudo systemcyl start runsunloginclient
+sudo systemctl restart runsunloginclient
+
+/usr/local/sunlogin/bin/sunloginclient
+
+# Switch user
+# Modify the passwd of remote user to fail it
+
+

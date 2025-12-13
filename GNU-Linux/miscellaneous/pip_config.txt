@@ -1,0 +1,8 @@
+pip config set global.index-url *
+
+vi ~/.config/pip/pip.conf
+
+# [global]
+trusted-host = *
+index-url = *
+

@@ -1,0 +1,2 @@
+sudo badblocks -v /dev/sda2 > ~/badblocks02.txt
+

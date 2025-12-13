@@ -1,0 +1,10 @@
+sudo dnf group list
+sudo dnf group install gnome-desktop
+
+sudo zypper search patterns-*
+sudo zypper install --no-recommends patterns-gnome-gnome
+
+sudo apt install gnome-core/gnome-classic/gnome-flashback
+
+sudo tasksel --list-tasks
+sudo tasksel install gnome-desktop

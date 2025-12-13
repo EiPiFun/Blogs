@@ -1,0 +1,11 @@
+# update GCC for CentOS 7
+sudo yum install centos-release-scl
+# Install and configure GCC-11 as example
+sudo yum install devtoolset-11-gcc*
+
+# Create links
+for i in cc c++ gcc g++;do sudo ln -s /opt/rh/devtoolset-11/root/bin/$i /usr/bin/$i-11;done
+
+# Use new version as default
+for i in cc c++ gcc g++;do sudo mv /usr/bin/$i /usr/bin/$i-4.8.5;done
+for i in cc c++ gcc g++;do sudo ln -s /opt/rh/devtoolset-11/root/bin/$i /usr/bin/$i;done

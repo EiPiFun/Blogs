@@ -1,0 +1,68 @@
+sudo vi /etc/yum.repos.d/centos.repo
+# Comment metalink and add baseurl
+# baseurl=https://mirrors.aliyun.com/centos-stream/$releasever-stream/BaseOS/$basearch/os/
+# baseurl=https://mirrors.aliyun.com/centos-stream/$releasever-stream/AppStream/$basearch/os/
+# baseurl=https://mirrors.aliyun.com/centos-stream/$releasever-stream/CRB/$basearch/os/
+
+sudo vi /etc/yum.repos.d/centos-addon.repo
+# Comment metalink and add baseurl
+# baseurl=https://mirrors.aliyun.com/centos-stream/SIGs/$releasever-stream/extras/$basearch/extras-common/
+
+sudo dnf install epel-release epel-next-release
+# Manually install "rpmfusion-free-release" and "rpmfusion-nonfree-release"
+
+sudo dnf install kernel-headers kernel-devel
+sudo dnf install dkms
+
+sudo dnf makecache
+sudo dnf update
+
+# Reboot to new kernel
+
+# Install NVIDIA driver
+
+# Check driver version
+ls /usr/src | grep nvidia
+
+sudo dkms install nvidia/*
+
+# Optional and risky below:
+
+# Raise priority of CentOS Stream repos first
+
+# Add Fedora 34 repo
+
+sudo vi/etc/yum.repos.d/fedora-repos.repo
+
+# [fedora]
+# name=Fedora 34 Repo
+# baseurl=https://mirrors.aliyun.com/fedora/releases/34/Everything/$basearch/os/
+# enabled=0
+# gpgcheck=0
+# repo_gpgcheck=0
+# priority=99
+# 
+# [fedora-modular]
+# name=Fedora 34 Modular Repo
+# baseurl=https://mirrors.aliyun.com/fedora/releases/34/Modular/$basearch/os/
+# enabled=0
+# gpgcheck=0
+# repo_gpgcheck=0
+# priority=99
+# 
+# [fedora-updates]
+# name=Fedora 34 Updates Repo
+# baseurl=https://mirrors.aliyun.com/fedora/updates/34/Everything/$basearch/
+# enabled=0
+# gpgcheck=0
+# repo_gpgcheck=0
+# priority=99
+#
+# [fedora-updates-modular]
+# name=Fedora 34 Updates Modular Repo
+# baseurl=https://mirrors.aliyun.com/fedora/updates/34/Modular/$basearch/
+# enabled=0
+# gpgcheck=0
+# repo_gpgcheck=0
+# priority=99
+

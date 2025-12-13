@@ -1,0 +1,15 @@
+# Add custom package to CMakeLists.txt
+
+tar -xf .../lammps-*.tar.gz
+cd .../lammps-*/cmake/
+
+vi CMakeLists.txt
+
+# set(STANDARD_PACKAGES
+#   EIPIFUN)
+
+# Place the source code folder to .../lammps-*/src/
+
+cp -r .../EIPIFUN/ .../lammps-*/src/
+
+

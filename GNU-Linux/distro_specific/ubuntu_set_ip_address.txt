@@ -1,0 +1,43 @@
+# Check network interfaces
+
+ip addr show
+
+# Set dhcp
+
+sudo nano /etc/netplan/eipifun.yaml
+
+# network:
+#   version: 2
+#   renderer: networkd
+# #  redderer: NetworkManager
+#   ethernets:
+#     ens33:
+#       dhcp4: yes
+#       nameservers:
+#           addresses: [8.8.8.8, 1.1.1.1]
+
+# Set static ip address
+
+sudo nano /etc/netplan/eipifun.yaml
+
+# network:
+#   version: 2
+#   renderer: networkd
+# #  redderer: NetworkManager
+#   ethernets:
+#     ens33:
+#       dhcp4: no
+#       addresses:
+#         - 192.168.28.36/24
+#       nameservers:
+#           addresses: [8.8.8.8, 1.1.1.1]
+#       routes:
+#         - to: default
+#           via: 192.168.28.1
+
+# Apply and check
+
+sudo netplan --debug apply
+
+ip addr show
+

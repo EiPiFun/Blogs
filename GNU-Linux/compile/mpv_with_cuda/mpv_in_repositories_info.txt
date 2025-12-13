@@ -1,0 +1,9 @@
+mpv in 
+RHEL (rpmfusion), Fedora (rpmfusion) and Ubuntu supports nvdec out of box
+
+mpv in 
+Debian supports nvdec if not optimus
+
+mpv in
+openSUSE does not really suport nvdec
+

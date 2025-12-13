@@ -1,0 +1,22 @@
+# nvidia or igpu
+
+if [ $XDG_SESSION_TYPE = x11 ];then
+export LIBVA_DRIVER_NAME=nvidia;export VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nvidia_icd.json;export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+else if [ $XDG_SESSION_TYPE = wayland ];then
+export LIBVA_DRIVER_NAME=iHD;export VK_DRIVER_FILES=/usr/share/vulkan/icd.d/intel_icd.x86_64.json;export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json;fi
+fi
+
+# nvidia prime
+
+export __NV_PRIME_RENDER_OFFLOAD=1
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export __VK_LAYER_NV_optimus=NVIDIA_only
+
+# nouveau and igpu, igpu only
+
+export DRI_PRIME=8086:3e92!
+export MESA_VK_DEVICE_SELECT=8086:3e92!
+export VK_DRIVER_FILES=/usr/share/vulkan/icd.d/intel_icd.x86_64.json
+export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
+
+

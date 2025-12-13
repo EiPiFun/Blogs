@@ -1,0 +1,9 @@
+vi ~/.config/lxqt/session.conf
+
+# window_manager=mutter
+# window_manager=kwin
+# window_manager=xfwm
+# window_manager=metacity
+# window_manager=compiz
+# window_manager=openbox
+

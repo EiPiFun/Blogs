@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+
+nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits|sort -n|head -n 1
+

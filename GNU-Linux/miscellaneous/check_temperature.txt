@@ -1,0 +1,19 @@
+# Check CPU temperature per Core
+
+sensors|grep Core|cut -d "°" -f1|rev|cut -d "+" -f1|rev
+
+# Check highest CPU temperature per Core
+
+sensors|grep Core|cut -d "°" -f1|rev|cut -d "+" -f1|rev|sort -n|tail -n 1|cut -d "." -f1
+
+# Check NVIDIA GPU temperature and utilization
+
+# GPU temperature
+nvidia-smi|grep Default|cut -d "C" -f1|rev|cut -d " " -f1|rev
+# Highest GPU temperature
+nvidia-smi|grep Default|cut -d "C" -f1|rev|cut -d " " -f1|rev|sort -n|tail -n 1
+
+# GPU utilization
+nvidia-smi|grep Default|cut -d "D" -f1|rev|cut -d "|" -f1|rev|cut -d "%" -f1|rev|cut -d " " -f1|rev
+# Lowest GPU utilization
+nvidia-smi|grep Default|cut -d "D" -f1|rev|cut -d "|" -f1|rev|cut -d "%" -f1|rev|cut -d " " -f1|rev|sort -n|head -n 1

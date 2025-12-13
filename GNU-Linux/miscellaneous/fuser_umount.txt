@@ -1,0 +1,1 @@
+sudo fuser -kmv $mounted_path

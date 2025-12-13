@@ -1,0 +1,11 @@
+[Unit]
+Description=Hourly NetworkManager Restart Timer
+
+[Timer]
+OnBootSec=4h
+OnUnitActiveSec=4h
+Unit=hourly_network_manager_restart.service
+
+[Install]
+WantedBy=timers.target
+

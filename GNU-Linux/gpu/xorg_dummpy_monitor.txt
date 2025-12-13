@@ -1,0 +1,35 @@
+# Modeline data
+
+xrandr --verbose
+
+# xorg.conf
+
+sudo vi /usr/share/X11/xorg.conf.d/dummpy_monitor.conf
+
+```
+Section "Monitor"
+    Identifier "dummy_monitor"
+    Modeline  "768p60hz"  65.000 1024 1048 1184 1344  768  771  777  806
+    Modeline  "720p50hz"  74.250 1280 1720 1760 1980  720  725  730  750
+    Modeline  "720p60hz"  74.250 1280 1390 1430 1650  720  725  730  750
+    Modeline "1080p25hz"  74.250 1920 2448 2492 2640 1080 1084 1089 1125
+    Modeline "1080p50hz" 148.500 1920 2448 2492 2640 1080 1084 1089 1125
+    Modeline "1080p30hz"  74.250 1920 2008 2052 2200 1080 1084 1089 1125
+    Modeline "1080p60hz" 148.500 1920 2008 2052 2200 1080 1084 1089 1125
+    Option "PreferredMode" "768p60hz"
+EndSection
+
+Section "Screen"
+    Identifier "dummpy_screen"
+    Monitor "dummy_monitor"
+    SubSection "Display"
+        Modes "768p60hz"
+    EndSubSection
+EndSection
+```
+
+# Remove saved configurations
+
+rm ~/.config/monitors.xml
+
+

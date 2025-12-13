@@ -1,0 +1,4 @@
+ldd $binary_location
+
+ldd $(which gcc)
+

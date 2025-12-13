@@ -1,0 +1,48 @@
+export GBM_BACKEND=nvidia-drm
+export VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nvidia_icd.x86_64.json
+export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+
+export LIBVA_DRIVER_NAME=iHD
+
+export CUDA_DISABLE_PERF_BOOST=1
+
+export CLUTTER_BACKEND=$XDG_SESSION_TYPE;export GDK_BACKEND=$XDG_SESSION_TYPE
+export SDL_VIDEODRIVER=$XDG_SESSION_TYPE;export SDL_VIDEO_DRIVER=$XDG_SESSION_TYPE
+export ELECTRON_OZONE_PLATFORM_HINT=$XDG_SESSION_TYPE
+
+export QT_QPA_PLATFORM=$XDG_SESSION_TYPE;if [ $XDG_SESSION_TYPE = x11 ];then export QT_QPA_PLATFORM=xcb;fi
+#export QT_QPA_PLATFORM='wayland;xcb'
+
+export GSK_RENDERER=vulkan
+export GDK_DISABLE=gl
+
+export MOZ_DISABLE_RDD_SANDBOX=1
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_X11_EGL=1
+
+export INPUT_METHOD=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+PATH=$HOME/software/bin/:/homex/home1/software/bin/:/homex/home1/software/venv/bin/:$PATH
+LD_LIBRARY_PATH=$HOME/software/lib/:/homex/home1/software/lib/:$LD_LIBRARY_PATH
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
+
+export LD_LIBRARY_PATH
+export PKG_CONFIG_PATH
+
+export DEBFULLNAME='Don Xu'
+export DEBEMAIL='me@eipi.fun'
+
+
+ware/lib/:$LD_LIBRARY_PATH
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/:$PKG_CONFIG_PATH
+
+export LD_LIBRARY_PATH
+export PKG_CONFIG_PATH
+
+export DEBFULLNAME='Don Xu'
+export DEBEMAIL='me@eipi.fun'
+
+

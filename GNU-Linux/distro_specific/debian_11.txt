@@ -1,0 +1,42 @@
+su
+
+gedit /etc/sudoers
+
+# Add backports repositories
+# Add contrib non-free repositories
+
+sudo vi /etc/apt/preference.d/eipifun
+
+# Package: *
+# Pin: release a=bullseye-backports
+# Pin-Priority: 200
+#
+# Package: *
+# Pin: release a=bullseye
+# Pin-Priority: 400
+#
+# Package: linux-image-*
+# Pin: release a=bullseye-backports
+# Pin-Priority: 800
+#
+# Package: linux-headers-*
+# Pin: release a=bullseye-backports
+# Pin-Priority: 800
+
+sudo apt update
+sudo apt upgrade
+
+# Reboot to new kernel
+
+# Install NVIDIA Graphics Driver
+# sudo apt install nvidia-driver nvidia-smi cuda-drivers
+
+# Install firmware
+# sudo apt install firmware-linux
+
+# Install Intel Sound Open Firmware
+# sudo apt install firmware-sof-signed
+
+# Install Intel Wireless firmware and Realtek firmware
+# sudo apt install firmware-iwlwifi
+# sudo apt install firmware-realtektek
