@@ -1,0 +1,130 @@
+# Check
+
+mpv --hwdec=help
+
+# For ~/.config/mpv/mpv.conf
+
+# Loop
+
+loop-file=inf
+
+# Full screen
+# No border
+# Especially for a certain vo and x11 window
+
+fullscreen=yes
+border=no
+
+# tty
+
+vo=drm
+hwdec=vaapi-copy,nvdec-copy
+
+# Intel or AMD
+
+vo=dmabuf-wayland,gpu-next
+gpu-api=opengl
+hwdec=vaapi
+
+
+
+# NVIDIA
+
+# Porblems:
+
+# nvdec and nvidia-vaapi driver may cause suspend problems
+# vulkan mainly supports h264 on older gpu, only works with gpu-next
+# vpdau needs copy, except for buggy vdpau vo, prefer h264 if vdpau vo
+
+# mpv+optimus+wayland+gpu-next, crashes if full screen
+# mpv+gpu-next+vdpau-copy, higher gpu utilization
+
+
+
+# NVIDIA, no copy
+
+vo=gpu-next
+gpu-api=vulkan
+hwdec=vulkan,vdpau,nvdec
+
+# NVIDIA, no nvdec
+
+vo=gpu-next
+gpu-api=vulkan
+hwdec=vulkan,vdpau,vdpau-copy
+
+# NVIDIA, no copy, no nvdec, vdpau vo, buggy, especially buggy on wayland, prefer h264
+
+vo=vdpau
+gpu-context=x11vk
+hwdec=vdpau
+
+# NVIDIA, no nvdec, no gpu-next on wayland, lower gpu and higher cpu
+
+vo=wlshm,gpu-next
+gpu-api=vulkan
+hwdec=vulkan,vdpau,vdpau-copy
+
+
+
+# NVIDIA, optimus
+# vdpau needs copy
+
+# NVIDIA, optimus, no copy
+
+vo=gpu-next
+gpu-api=vulkan
+hwdec=vulkan,nvdec
+
+# NVIDIA, optimus, no copy, xwayland on wayland
+
+vo=gpu-next
+gpu-context=x11vk
+hwdec=vulkan,nvdec
+
+# NVIDIA, optimus, no nvdec
+
+vo=gpu-next
+gpu-api=vulkan
+hwdec=vulkan,vdpau-copy
+
+# NVIDIA, optimus, no nvdec, xwayland on wayland
+
+vo=gpu-next
+gpu-context=x11vk
+hwdec=vulkan,vdpau-copy
+
+# NVIDIA, optimus, no copy, no nvdec, vdpau vo, buggy, especially buggy on wayland, prefer h264
+
+vo=vdpau
+gpu-context=x11vk
+hwdec=vdpau
+
+# NVIDIA, optimus, no nvdec, no gpu-next on wayland, lower gpu and higher cpu
+
+vo=wlshm,gpu-next
+gpu-api=vulkan
+hwdec=vulkan,vdpau-copy
+
+
+
+# NVIDIA, optimus, switchable
+
+# Intel or AMD on wayland, NVIDIA on x11, no copy
+
+vo=dmabuf-wayland,gpu-next
+gpu-api=vulkan
+hwdec=vulkan,nvdec,vaapi
+
+# Intel or AMD on wayland, NVIDIA on x11, no nvdec
+
+vo=dmabuf-wayland,gpu-next
+gpu-api=vulkan
+hwdec=vulkan,vdpau-copy,vaapi
+
+# Intel or AMD on wayland, NVIDIA on x11, no copy, no nvdec, vdpau vo, buggy, prefer h264
+
+vo=dmabuf-wayland,vdpau
+gpu-api=vulkan
+hwdec=vdpau,vaapi
+

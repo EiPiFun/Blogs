@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+
+sensors|grep -E 'Core|Tctl'|cut -d . -f 1|cut -d + -f 2|sort -n|tail -n 1
+

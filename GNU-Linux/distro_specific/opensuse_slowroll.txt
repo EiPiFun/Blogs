@@ -1,0 +1,22 @@
+# Switch between Tumbleweed to Slowroll
+
+sudo zypper install openSUSE-repos-Slowroll
+
+sudo zypper install openSUSE-repos-Slowroll-NVIDIA
+
+sudo zypper dup
+
+# Also check the Packman repo
+
+# Adjust priority of update-slowroll
+
+vi /usr/share/zypp/local/service/openSUSE/repo/repoindex.xml
+
+# May use kernel-longterm instead of kernel-default
+
+# Or do a minimum installation of Tumbleweed first
+# Cause the net installer may use repos of Tumbleweed
+
+# Do not activate online repos
+# Select "Server"
+

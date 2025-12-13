@@ -1,0 +1,10 @@
+#!/usr/bin/sh
+
+home_id=1
+if [ $# -gt 0 ];then
+home_id=$1
+fi
+
+df -h|grep /homex/home$home_id|tr -s ' '|cut -d ' ' -f 4
+
+

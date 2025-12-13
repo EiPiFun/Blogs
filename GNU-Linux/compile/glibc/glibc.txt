@@ -1,0 +1,11 @@
+tar -xf ./glibc-*.tar.gz
+cd ./glibc-*.tar.gz
+
+
+mkdir ./build/
+cd ./build/
+
+# exclude current diretory from LD_LIBRARY_PATH
+
+../configure --prefix=* --without-selinux --disable-werror
+

@@ -1,0 +1,5 @@
+sudo dnf install libxkbcommon-x11
+
+sudo vi ~/.bash_profile
+
+# export QT_DEBUG_PLUGINS=1

@@ -1,0 +1,34 @@
+# Install igdgmm first
+
+tar -xf ./gmmlib-intel-gmmlib-*.tar.gz
+cd ./gmmlib-intel-gmmlib-*/
+
+mkdir ./build/
+cd ./build/
+
+cmake -DCMAKE_INSTALL_PREFIX=* ..
+
+make install -j
+
+# export PKG_CONFIG_PATH for igdgmm
+
+# Install libdrm-devel/libdrm-dev, libX11-devel/libx11-dev and wayland-devel/libwayland-dev
+
+# Install intel-media-driver
+
+tar -xf ./media-driver-intel-media-*.tar.gz
+cd ./media-driver-intel-media-*/
+
+mkdir ./build/
+cd ./build/
+
+cmake -DCMAKE_INSTALL_PREFIX=* -DLIBVA_DRIVERS_PATH=*/dri/ ..
+
+make install -j
+
+# export if needed
+
+export LIBVA_DRIVERS_PATH=*/dri/
+export LIBVA_DRIVER_NAME=iHD
+
+

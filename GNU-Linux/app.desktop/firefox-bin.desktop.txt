@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=firefox-bin
+Exec=/usr/bin/sh -c 'export __NV_DISABLE_EXPLICIT_SYNC=1;export LIBVA_DRIVER_NAME=nvidia;/homex/home1/software/firefox/firefox/firefox-bin'
+Terminal=false

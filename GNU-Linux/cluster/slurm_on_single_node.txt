@@ -1,0 +1,126 @@
+# Reference
+# https://southgreenplatform.github.io/trainings/hpc/slurminstallation/
+# https://slurm.schemd.com/cons_res.html
+# https://slurm.schemd.com/cons_res_share.html
+
+# To generate slurm.conf and cgroup.conf
+# https://slurm.schedmd.com/configurator.html
+
+# Create user and group for munge and slurm
+
+export MUNGEUSER=1101
+sudo groupadd -g $MUNGEUSER munge
+sudo useradd  -m -c "MUNGE" -d /var/lib/munge -u $MUNGEUSER -g munge  -s /usr/sbin/nologin munge
+export SLURMUSER=1102
+sudo groupadd -g $SLURMUSER slurm
+sudo useradd  -m -c "SLURM" -d /var/lib/slurm -u $SLURMUSER -g slurm  -s /usr/bin/bash slurm
+
+# Check or modify
+
+sudo nano /etc/group
+sudo nano /etc/passwd
+
+# Install and configure munge
+
+sudo dnf install munge
+sudo zypper install munge
+sudo apt install munge
+
+sudo create-munge-key
+sudo mungekey --create
+
+sudo systemctl enable munge
+sudo systemctl start munge
+
+# Check munge
+
+systemctl status munge
+munge -n | unmunge
+
+# Install and configure slurm
+
+sudo dnf install slurm-slurmctld slurm-slurmd
+sudo zypper install slurm slurm-node
+sudo apt install slurmctld slurmd
+
+sudo nano /etc/slurm/slurm.conf
+
+```
+ClusterName=
+SlurmctldHost=
+MaxJobId=
+SlurmdSpoolDir=/var/spool/slurm/slurmd/
+StateSaveLocation=/var/spool/slurm/slurmctld/
+SlurmUser=slurm
+#TaskPlugin=task/none
+TaskPlugin=task/affinity
+#TaskPluginParam=None
+TaskPluginParam=Cores
+#TaskPluginParam=Threads
+SelectType=select/cons_tres
+SelectTypeParameters=CR_Core
+#SelectTypeParameters=CR_CPU
+SlurmctldLogFile=/var/log/slurm/slurmctld.log
+SlurmdLogFile=/var/log/slurm/slurmd.log
+SlurmdParameters=config_overrides
+# COMPUTES NODES
+NodeName= CPUs=
+PartitionName= Nodes=*,*,* Default=YES MaxTime=INFINITE State=UP
+```
+
+# May also need /etc/slurm/cgroup.conf
+
+sudo nano /etc/slurm/cgroup.conf
+
+```
+ConstrainCores=yes
+#ConstrainCores=no
+ConstrainRAMSpace=yes
+#ConstrainRAMSpace=no
+```
+
+# Create and configure log folders
+
+sudo mkdir /var/spool/slurm/
+sudo mkdir /var/spool/slurm/slurmd/
+sudo mkdir /var/spool/slurm/slurmctld/
+sudo chown -R slurm:slurm /var/spool/slurm/
+sudo chmod 0755 /var/spool/slurm/slurmd/
+sudo chmod 0755 /var/spool/slurm/slurmctld/
+
+sudo mkdir /var/log/slurm/
+sudo touch /var/log/slurm/slurmd.log
+sudo touch /var/log/slurm/slurmctld.log
+sudo touch /var/log/slurm/slurm_jobacct.log /var/log/slurm/slurm_jobcomp.log
+sudo chown -R slurm:slurm /var/log/slurm/
+
+# To debug
+
+slurmd -C
+sudo slurmd -C
+sudo slurmd -D
+sudo slurmctld -D
+
+# Start and check service
+
+sudo systemctl enable slurmctld
+sudo systemctl start slurmctld
+systemctl status slurmctld
+
+sudo systemctl enable slurmd
+sudo systemctl start slurmd
+systemctl status slurmd
+
+# Change the state of a node to idle
+
+sudo scontrol update NodeName=* State=idle
+
+# If problems met
+
+sudo scontrol update NodeName=* State=DOWN Reason=hung_completing
+ 
+sudo systemctl restart slurmctld
+sudo systemctl restart slurmd
+ 
+sudo scontrol update NodeName=* State=RESUME
+

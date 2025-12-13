@@ -1,0 +1,31 @@
+sudo apt install debootstrap schroot
+
+sudo cp /etc/schroot/schroot.conf /etc/schroot/schroot.conf.orig
+
+sudo vi /etc/schroot/schroot.conf
+
+```
+[sid-amd64]
+description=debian sid amd64
+type=directory
+directory=/srv/chroot/sid-amd64
+users=eipifun
+root-groups=root
+preserve-environment=true
+```
+
+sudo mkdir -p /srv/chroot/sid-amd64/
+
+sudo debootstrap --arch amd64 sid /srv/chroot/sid-amd64/
+
+schroot -l
+
+schroot -c sid-amd64
+
+# Upgrade
+
+sudo chroot /srv/chroot/sid-amd64/
+
+apt update && apt upgrade -y
+
+

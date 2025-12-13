@@ -1,0 +1,4 @@
+sudo vi /etc/default/grub
+
+# remove "rhgb" in the GRUB_CMDLINE_LINUX
+

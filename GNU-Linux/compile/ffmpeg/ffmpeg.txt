@@ -1,0 +1,19 @@
+tar -xf ./FFmpeg-*.tar.gz
+cd ./FFmpeg-*/
+
+mkdir ./build/
+cd ./build/
+
+# minimum set: enable openssl, libdrm and vaapi; disable libxcb, opengl and vulkan
+
+# openssl 1
+
+../configure --enable-pic --enable-static --enable-shared --disable-debug --disable-doc --disable-ffplay --enable-gpl --enable-nonfree --enable-openssl --enable-libdrm --disable-libxcb --prefix=* --enable-vaapi --enable-opengl --enable-vulkan --enable-vdpau --enable-ffnvcodec --enable-nvdec --enable-nvenc --enable-cuda-llvm
+
+# openssl 3
+
+../configure --enable-pic --enable-static --enable-shared --disable-debug --disable-doc --disable-ffplay --enable-gpl --enable-version3 --enable-openssl --enable-libdrm --disable-libxcb --prefix=* --enable-vaapi --enable-opengl --enable-vulkan --enable-vdpau --enable-ffnvcodec --enable-nvdec --enable-nvenc --enable-cuda-llvm
+
+make -j install
+
+

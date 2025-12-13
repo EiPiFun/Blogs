@@ -1,0 +1,2 @@
+# uninstall NVIDIA driver if from run file
+nvidia-uninstall

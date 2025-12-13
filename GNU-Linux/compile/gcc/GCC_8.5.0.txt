@@ -1,0 +1,9 @@
+Automake-1.16.5
+GMP-6.2.1
+MPFR-4.1.1
+MPC-1.2.1
+linux/cyclades.h
+GCC-8.5.0
+
+cmake-3.20.2
+CUDA-10.0

@@ -1,0 +1,11 @@
+#### All paths, version number may be different.
+
+# Dependencies
+
+compat-libgfortran-48
+
+boost
+boost-devel
+bzip2
+bzip2-devel
+

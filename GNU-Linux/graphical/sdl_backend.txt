@@ -1,0 +1,11 @@
+# SDL2 backend
+# wayland, x11
+
+export SDL_VIDEODRIVER=wayland
+
+# SDL3 backend
+# wayland, x11
+
+export SDL_VIDEO_DRIVER=wayland
+
+

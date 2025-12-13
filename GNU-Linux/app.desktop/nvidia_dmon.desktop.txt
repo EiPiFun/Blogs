@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=nvidia dmon
+Exec=/usr/bin/watch /usr/bin/nvidia-smi dmon -s u -c 1
+Terminal=true

@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily Reboot
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/reboot
+ExecReload=/usr/sbin/reboot
+ExecStop=/usr/sbin/reboot
+

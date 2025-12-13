@@ -1,0 +1,7 @@
+# For Intel and AMD:
+vblank_mode=0 glxgears
+
+# For NVIDIA:
+__GL_SYNC_TO_VBLANK=0 glxgears
+
+

@@ -1,0 +1,4 @@
+chromium --gtk-version=4
+chromium --enable-wayland-ime
+chromium --enable-wayland-ime --wayland-text-input-version=3
+

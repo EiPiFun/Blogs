@@ -1,0 +1,11 @@
+# Reference: https://docs.lammps.org/package.html
+
+package gpu 2 gpuID 1 omp 4 neigh no
+package omp 4 neigh no
+
+# OpenMP
+
+export OMP_NUM_THREADS=8
+export OMP_PROC_BIND=true
+export OMP_PLACES=cores
+

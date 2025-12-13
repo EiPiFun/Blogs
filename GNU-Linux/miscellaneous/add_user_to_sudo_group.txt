@@ -1,0 +1,28 @@
+# Check sudo or wheel group in /etc/sudoers
+
+# Add a user to sudo group
+
+sudo usermod -a -G sudo $username
+
+# Or wheel group
+
+sudo usermod -a -G wheel $username
+
+# Add current user to sudo group
+
+sudo usermod -a -G sudo $(whoami)
+
+# Or wheel group
+
+sudo usermod -a -G wheel $(whoami)
+
+# Reboot
+
+# Alternatively, modify sudoers using root
+
+vi /etc/sudoers
+
+# eipifun ALL=(ALL:ALL) ALL
+# %sudo   ALL=(ALL:ALL) ALL
+# %wheel  ALL=(ALL:ALL) ALL
+

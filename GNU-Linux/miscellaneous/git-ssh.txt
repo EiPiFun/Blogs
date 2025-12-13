@@ -1,0 +1,50 @@
+git config --global user.name *
+git config --glbbal user.email *
+
+ssh -T git@github.com
+
+git init
+
+git remote remove origin
+
+git remote rename origin old-origin
+
+git remote add origin git@github.com:*/*.git
+
+git clone git@github.com:*/*.git
+
+git branch -m
+
+git branch -r
+
+git branch
+
+git branch $new_local_branch
+
+git branch -d $branch_to_delete
+
+git branch -D $branch_to_delete
+
+git branch -f $branch_to_overwrite $branch_source
+
+git switch -c $new_local_branch
+
+git switch $new_local_branch
+
+git checkout
+
+git checkout -b *
+
+git pull origin $remote_branch:$local_branch
+
+git commit -a
+
+git push origin *
+
+git log
+
+git push origin --all
+
+git push origin --tags
+
+

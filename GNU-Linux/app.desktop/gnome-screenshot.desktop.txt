@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=GNOME Screenshot
+Exec=gnome-screenshot --interactive
+Terminal=false
+Icon=org.gnome.Screenshot

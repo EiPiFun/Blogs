@@ -1,0 +1,21 @@
+sudo systemctl stop packagekit.service
+sudo systemctl mask packagekit.service
+
+# Just use Yast to update mirror address or follow bellows
+
+sudo zypper modifyrepo -Ka
+
+for i in non-oss oss;do sudo zypper addrepo -f https://mirrors.aliyun.com/opensuse/distribution/leap/15.4/repo/$i ali-opensuse-15.4-distribution-$i;done
+
+for i in non-oss oss;do sudo zypper modifyrepo -p 98 ali-opensuse-15.4-distribution-$i;done
+
+for i in backports non-oss oss sle;do sudo zypper addrepo -f https://mirrors.aliyun.com/opensuse/update/leap/15.4/$i ali-opensuse-15.4-update-$i;done
+
+for i in backports non-oss oss sle;do sudo zypper modifyrepo -p 98 ali-opensuse-15.4-update-$i;done
+
+sudo zypper refresh
+sudo zypper update
+
+sudo update-alternatives --install zyp /usr/bin/zyp /usr/bin/zypper 99
+
+# If installing NVIDIA Graphics Driver, check /etc/modprobe.d/*.conf for "blacklist nvidia" and "nvidia-drm modeset=1"

@@ -1,0 +1,21 @@
+# mkdir mount point
+
+sudo mkdir /tmp/temp_mount/
+
+# Mount iso
+
+sudo mount --options loop,ro .../debian.iso /tmp/temp_mount/
+
+# Or mount installation media directly
+
+sudo mount /dev/sd* /tmp/temp_mount/
+
+# Edit source.list
+
+sudo vi /etc/apt/source.list
+
+```
+deb [trusted=yes] file:///tmp/temp_mount/debian/ stable contrib main non-free-firmware
+```
+
+

@@ -1,0 +1,11 @@
+# Install steam/steam-installer
+
+# If debian/ubuntu
+
+sudo dpkg --add-architecture i386
+
+# If debian/ubuntu with nvidia
+
+sudo apt install nvidia-driver-libs:i386
+
+

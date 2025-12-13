@@ -1,0 +1,45 @@
+# Install chrony on every node
+sudo dnf install chrony
+sudo zypper install chrony
+sudo apt install chrony
+
+# Configure on control node
+
+sudo vi /etc/chrony.conf
+
+```
+allow 192.168.1.0/16
+```
+
+# Configure on compute node
+
+sudo vi /etc/chrony.conf
+
+```
+server 192.168.1.1 iburst
+```
+
+# Add to fireward on control node
+
+sudo systemctl enable firewalld
+sudo systemctl start firewalld
+sudo firewall-cmd --add-service=ntp --permanent
+sudo firewall-cmd --reload
+
+# Check port
+sudo ss -tnlp | grep chrony
+
+# To debug
+
+chronyc sources
+chronyc clients
+timedatectl
+
+# Enable and start chrony
+
+sudo systemctl enable chronyd
+sudo systemctl restart chronyd
+systemctl status chronyd
+
+
+

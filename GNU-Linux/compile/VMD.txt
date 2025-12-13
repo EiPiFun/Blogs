@@ -1,0 +1,45 @@
+# Install dependencies
+
+gcc
+gcc-c++/g++
+gcc-gfortran/gcc-fortran/gfortran
+fftw-devel/fftw3-devel/libfftw3-dev
+mesa-libGL-devel/Mesa-libGL-devel/libgl-dev
+mesa-libEGL-devel/Mesa-libEGL-devel/libegl-dev
+openmpi-devel/openmpi4-dev/libopenmpi-dev
+tcl-devel/tcl-dev
+tk-devel/tk-dev
+fltk-devel/libfltk1.3-dev
+netcdf-devel/libnetcdf-dev
+
+# RedHat only
+module load mpi
+
+# Compile and install VMD
+
+export PLUGINDIR=$HOME/temp/plugins/
+
+cd .../vmd-*.src/plugins/
+
+# May need to modify Make-arch file
+# vi ./Make-arch
+# check TCLLDFLAGS
+
+make LINUXAMD64 
+make distrib
+
+cd .../vmd-*.src/vmd-*/
+
+cp -r $PLUGINDIR ./
+
+# May need to modify configure file
+# vi ./configure
+# check $install_name, $install_bin_dir, $install_library_dir, $tcl_libs, $stock_tcl_include_dir, $stock_tcl_library_dir, $stock_tk_include_dir, $stock_tk_library_dir, $cuda_dir, $cuda_library, $cuda_include, &arch_nvcc, $arch_nvccflags ...
+
+./configure LINUXAMD64 OPENGL TCL FLTK TK PTHREADS NOSILENT
+
+cd ./src/
+
+make veryclean
+make -j
+make install

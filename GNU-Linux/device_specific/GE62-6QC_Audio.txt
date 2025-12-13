@@ -1,0 +1,95 @@
+# Disable power save
+
+sudo vi /etc/modprobe.d/eipifun.conf
+
+```
+options snd-hda-intel power_save=0 power_save_controller=N
+```
+
+# Auto mute
+
+sudo vi /etc/systemd/system/auto_mute.service
+
+```
+[Unit]
+Description=Auto Mute
+Before=systemd-poweroff.service
+Before=systemd-reboot.service
+Before=systemd-suspend.service
+Before=systemd-hibernate.service
+
+[Service]
+Type=oneshot
+User=user
+Group=user
+Environment="XDG_RUNTIME_DIR=/run/user/1000"
+ExecStart=/usr/bin/amixer set Master 10% mute
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=systemd-poweroff.service
+WantedBy=systemd-reboot.service
+WantedBy=systemd-suspend.service
+WantedBy=systemd-hibernate.service
+```
+
+sudo systemctl enable auto_mute
+
+# Lower PCM volume to green and disable Auto-Mute
+
+alsamixer
+
+# Configure or disable tlp, tuned, laptop-mode-tools if needed
+
+# If configure tlp
+
+sudo vi /etc/default/tlp
+
+```
+SOUND_POWER_SAVE_ON_AC=0
+SOUND_POWER_SAVE_ON_BAT=0
+SOUND_POWER_SAVE_CONTROLLER=N
+```
+
+sudo systemctl restart tlp
+
+# If configure tuned
+
+sudo mkdir /etc/tuned/profiles/eipifun/
+sudo vi /etc/tuned/profiles/eipifun/eipifun.conf
+
+```
+[audio]
+timeout=0
+```
+
+sudo vi /etc/tuned/post_loaded_profile
+
+```
+/etc/tuned/profiles/eipifun/
+```
+
+sudo systemctl restart tuned
+
+
+# If configure PulseAudio
+
+sudo vi /usr/share/pulseaudio/alsa-mixer/paths/analog-output-headphones(-2).conf
+
+```
+[Element Front]
+switch=off
+volume=off
+```
+
+sudo vi /usr/share/pulseaudio/alsa-mixer/paths/analog-output.conf.common
+
+```
+[Element PCM]
+switch=mute
+volume=ignore
+```
+
+# Reboot
+
+

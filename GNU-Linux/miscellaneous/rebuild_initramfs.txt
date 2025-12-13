@@ -1,0 +1,2 @@
+dracut --fstab --force --kver *
+update-initramfs -u

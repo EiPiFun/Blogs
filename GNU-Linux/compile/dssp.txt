@@ -1,0 +1,20 @@
+# Tested combination
+
+boost 1.75.0
+hssp 3.0.10
+gromacs 2021.7
+
+tar -xf ./dssp-*.tar.gz
+cd .../dssp-*/
+
+./autogen.sh
+
+./configure --prefix=*
+# if manually installed boost, append LIBRARY_PATH and LD_LIBRARY_PATH
+./configure --prefix=* --with-boost=*
+
+# May need to remove "-Werror" in Makefile.in
+
+make -j
+make install
+

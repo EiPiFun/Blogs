@@ -1,0 +1,29 @@
+# Install cmrt first, cmrt-devel/libcmrt-dev
+# Or compile
+
+tar -xf ./cmrt-*.tar.gz
+cd ./cmrt-*/
+
+./autogen.sh --prefix=*
+
+make install -j
+
+# export PKG_CONFIG_PATH for cmrt
+
+# Install libdrm-devel/libdrm-dev, libX11-devel/libx11-dev and wayland-devel/libwayland-dev
+
+# Install intel-hybrid-driver, do not use release
+
+tar -xf ./intel-hybrid-driver-master.tar.gz
+cd ./intel-hybrid-driver-master/
+
+./autogen.sh
+
+make install -j
+
+# export if needed
+
+export LIBVA_DRIVERS_PATH=*/dri/
+export LIBVA_DRIVER_NAME=hybrid
+export LIBVA_DRIVER_NAME=i965
+

@@ -1,0 +1,71 @@
+# Reference: https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/gpu/vaapi.md
+
+# Require a patched Chromium, Google Chrome may not work, vaapi adapter may not work
+# Chromium in Fedora/RHEL, openSUSE and Debian seems to be patched
+# Google Chrome version 125 works with --enable-features
+
+# For Fedora:
+# Remove libva-intel-media-driver
+# Install intel-media-driver from rpmfusion to support h264 and hevc
+
+# For RHEL:
+# Add rpmfusion first
+
+# For openSUSE:
+# Install codecs from packman first
+# Or try Google Chrome
+
+# For Debian:
+# Remove intel-media-va-driver
+# Install intel-media-va-driver-non-free
+
+# For Ubuntu:
+# Do not install Chromium (snap), try Google Chrome
+
+# environment variables, prefer iHD
+ 
+export LIBVA_DRIVER_NAME=iHD
+export LIBVA_DRIVER_NAME=i965
+
+export LIBVA_DRI3_DISABLE=1
+
+# enable features
+
+# OpenGL (--use-gl=angle --use-angle=gl)
+
+chromium --ozone-platform-hint=auto --enable-zero-copy --enable-features=AcceleratedVideoEncoder,AcceleratedVideoDecoder,AcceleratedVideoDecodeLinuxGL
+
+# Vulkan (--use-gl=angle --use-angle=vulkan)
+
+chromium --ozone-platform-hint=auto --enable-zero-copy --enable-features=AcceleratedVideoEncoder,AcceleratedVideoDecoder,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE
+
+# Or explicitly, --ozone-platform=wayland or --ozone-platform=x11, cause xwayland has a bad performance
+
+# select gpu
+
+--render-node-override=/dev/dri/renderer128
+--render-node-override=/dev/dri/renderer129
+
+# Other useful features:
+
+VaapiOnNvidiaGPUs,VaapiIgnoreDriverChecks
+
+# Other userful flags:
+
+--enable-gpu-rasterization
+--enable-native-gpu-memory-buffers
+
+--enable-gpu-memory-buffer-video-frames
+--use-cmd-decoder=passthrough
+
+--ignore-gpu-blocklist
+--disable-gpu-driver-bug-workaround
+
+# Debug
+
+export LIBVA_MESSAGING_LEVEL=2
+
+chrome://gpu
+chrome://media-internals
+
+

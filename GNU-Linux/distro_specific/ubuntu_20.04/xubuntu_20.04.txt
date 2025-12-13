@@ -1,0 +1,23 @@
+sudo apt install gnome-software
+sudo apt remove --purge snapd*
+sudo apt remove --purge libreoffice*
+sudo apt autoremove
+sudo apt install fcitx
+sudo apt install fcitx-pinyin fcitx-table-wubi
+sudo apt install fcitx-config-gtk
+sudo apt install seahorse
+
+sudo mousepad /etc/bluetooth/main.conf
+# AutoEnable=false
+
+# Change Time Zone and disable "Automatic Date & Time"
+# Atlantic/Reykjavik
+
+# Recheck and install system updates
+# Reboot
+
+# Install additional drivers and language support
+# Reboot
+
+# Switch Input Method to "fcitx"
+# Change NVIDIA PRIME Profiles to "NVIDIA"

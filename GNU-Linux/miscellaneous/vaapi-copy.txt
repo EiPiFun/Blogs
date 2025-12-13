@@ -1,0 +1,11 @@
+libva-intel-driver/i965-va-driver
+intel-media-driver/intel-media-va-driver
+
+export LIBVA_DRIVERS_PATH=/usr/lib(64)/(x86_64-linux-gnu/)dri/
+export LIBVA_DRIVER_NAME=i965|iHD
+
+vi mpv.conf
+
+# vo=gpu
+# hwdec=vaapi-copy
+# vaapi-device=/dev/dri/renderD128

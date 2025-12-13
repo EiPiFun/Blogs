@@ -1,0 +1,9 @@
+vi ~/.caffrc
+
+# $ENV{'PERL_MAILERS'} = 'sendmail:/usr/bin/msmtp';
+
+# $CONFIG{'owner'} = 'EiPiFun';
+# $CONFIG{'email'} = 'me@eipi.fun';
+# $CONFIG{'keyid'} = [ qw{FEDCBA9876543210} ];
+
+

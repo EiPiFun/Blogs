@@ -1,0 +1,13 @@
+# Daily reboot as 23:59 as an example
+
+# Edit
+
+sudo crontab -e
+
+# 59 23 * * * /usr/bin/sleep 70 && /usr/bin/touch /etc/banner && /usr/sbin/reboot
+
+# List
+
+sudo crontab -l
+
+

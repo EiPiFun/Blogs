@@ -1,0 +1,11 @@
+# username@hostname:pwd
+
+# command line only
+
+PS1="[\u@\h:\w\a]$ "
+
+# title and command line
+# "\[\e]0;$title_content\a\]" for title
+
+PS1="\[\e]0;\u@\h:\w\a\][\u@\h:\w\a]$ "
+

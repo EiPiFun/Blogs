@@ -1,0 +1,15 @@
+# https://github.com/Hagb/docker-easyconnect
+# Install docker
+
+sudo systemctl start docker
+
+sudo docker pull hagb/docker-easyconnect:cli
+
+sudo docker container stop easyconnect
+sudo docker container rm easyconnect
+
+sudo docker run -d --name easyconnect --rm --device /dev/net/tun --cap-add NET_ADMIN -ti -p 127.0.0.1:4321:1080 -p 127.0.0.1:8765:8888 -e EC_VER=7.6.3 -e CLI_OPTS="-d vpnaddress -u username -p password" hagb/docker-easyconnect:cli
+
+# comments
+# "-d" run as daemon, 4321 port for SOCKS 5, 8765 port for HTTP
+

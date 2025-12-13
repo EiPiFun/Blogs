@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=QQ Music
+Exec=/usr/bin/sh -c 'export GDK_BACKEND=x11;/homex/home1/software/qqmusic/qqmusic-1.1.8.AppImage --no-sandbox'
+Terminal=false
+Icon=/homex/home1/software/qqmusic/qqmusic.png

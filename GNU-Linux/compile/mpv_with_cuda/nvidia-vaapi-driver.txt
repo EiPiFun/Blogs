@@ -1,0 +1,19 @@
+# Install
+
+git clone https://github.com/elFarto/nvidia-vaapi-driver
+
+meson setup build
+sudo meson install -C build
+
+export LIBVA_DRIVER_NAME=nvidia
+export VDPAU_DRIVER=nvidia
+
+export export NVD_BACKEND=egl
+# For driver version higher than 520
+export export NVD_BACKEND=direct
+
+# Check, dependencies: libva-utils/vdpauinfo
+
+vainfo
+vdpauinfo
+

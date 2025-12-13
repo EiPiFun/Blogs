@@ -1,0 +1,5 @@
+watch nvidia-smi
+sudo intel_gpu_top
+
+# Decoding
+watch nvidia-smi pmon -c 1

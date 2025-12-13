@@ -1,0 +1,13 @@
+# Append to boot parameters
+
+sudo vi /etc/default/grub
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="fsck.mode=force fsck.repair=yes"
+```
+
+# Update grub
+
+# Reboot
+
+

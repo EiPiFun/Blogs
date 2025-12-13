@@ -1,0 +1,14 @@
+tar -xf eigen-3.*.tar.gz
+cd ./eigen-3.*
+
+mkdir ./build/
+cd ./build/
+
+cmake -DCMAKE_INSTALL_PREFIX=* ..
+
+make install
+
+# To use Eigen
+export Eigen3_DIR=*
+
+

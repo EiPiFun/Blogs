@@ -1,0 +1,17 @@
+# Enabling 32bit x86 support in Kernel
+
+sudo zypper install --no-recommends grub2-compat-ia32
+
+# Or append a kernel parameter
+
+sudo vi /etc/default/grub
+
+```
+ia32_emulation=1
+```
+
+# Install SELinxu policy
+
+sudo zypper install --no-recommends selinux-policy-targeted-gaming
+
+

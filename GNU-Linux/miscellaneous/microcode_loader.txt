@@ -1,0 +1,9 @@
+# dis_ucode_ldr
+
+sudo vi /etc/default/grub
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="dis_ucode_ldr"
+```
+
+

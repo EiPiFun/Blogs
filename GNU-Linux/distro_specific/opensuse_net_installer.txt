@@ -1,0 +1,8 @@
+# Click "show details" to change mirror if failed
+
+# Enter tty to mannually debug
+
+vi /etc/resolv.conf
+
+vi /etc/zypp/repos.d/*
+

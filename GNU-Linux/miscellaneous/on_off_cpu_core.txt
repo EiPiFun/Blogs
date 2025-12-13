@@ -1,0 +1,4 @@
+# On
+echo 1 > /sys/devices/system/cpu/cpu*/online
+# Off
+echo 0 > /sys/devices/system/cpu/cpu*/online

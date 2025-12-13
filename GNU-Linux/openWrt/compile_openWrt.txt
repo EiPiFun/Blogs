@@ -1,0 +1,60 @@
+# Recommend to use something like debootstrap
+# https://openwrt.org/docs/guide-developer/toolchain/install-buildsystem
+# https://openwrt.org/docs/guide-developer/toolchain/use-buildsystem
+
+git clone https://git.openwrt.org/openwrt/openwrt.git
+cd openwrt
+git pull
+
+git stash
+git checkout -b temp
+git checkout main
+git pull
+
+git branch -a
+git tag
+git checkout v***
+
+./scripts/feeds update -a
+./scripts/feeds install -a -f
+
+# en flash driver, not needed since 23.05.4
+
+rm .config
+make menuconfig
+make clean
+make defconfig
+make download
+make -j *
+
+# if in chroot
+
+export FORCE_UNSAFE_CONFIGURE=1
+
+# menuconfig
+
+# Base System
+ca-bundle
+ca-certificates
+# LuCI-Collections
+luci
+luci-ssl
+# Network->File Transfer
+curl    
+
+# optional:
+
+# Network->File Transfer
+vsftpd
+vsftpd-tls (requires openssl)
+
+# Network->VPN
+xl2tpd
+# Network->WirelessAPD
+wpad-mbedtls (only this wapd)
+
+# Utilities
+procps-ng
+procps-np-pkill
+# Utilities-Shells
+bash

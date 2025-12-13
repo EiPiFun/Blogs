@@ -1,0 +1,16 @@
+# Remove snap package
+
+for i in $(snap list|cut -d ' ' -f 1);do sudo snap remove --purge $i;done
+for i in $(snap list|awk 'NR>1 {print $1}');do sudo snap remove --purge $i;done
+
+snap list
+
+sudo snap remove --purge firefox
+sudo snap remove --purge snap-store
+sudo snap remove --purge firmware-updater
+
+# Remove snapd
+
+sudo apt remove --autoremove snapd
+
+

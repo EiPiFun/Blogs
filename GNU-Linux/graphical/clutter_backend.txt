@@ -1,0 +1,6 @@
+# Clutter backend
+# wayland, x11
+
+export CLUTTER_BACKEND=x11
+
+

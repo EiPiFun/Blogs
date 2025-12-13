@@ -1,0 +1,20 @@
+# Reference: https://developer.nvidia.com/datacenter-driver-580-downloads
+
+# open kernel module flavor:
+
+sudo dnf/zypper/apt install nvidia-open
+
+# proprietary kernel module flavor:
+
+sudo dnf/zypper/apt install cuda-drivers
+
+# Specify a version
+
+sudo dnf/zypper/apt remove nvidia-open
+sudo dnf/zypper/apt install nvidia-open-580
+
+sudo dnf/zypper/apt remove cuda-drivers
+sudo dnf/zypper/apt install cuda-drivers-580
+
+# Apply version lock and create links if needed
+

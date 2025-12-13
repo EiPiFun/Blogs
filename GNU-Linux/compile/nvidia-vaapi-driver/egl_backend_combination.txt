@@ -1,0 +1,8 @@
+# kernel+driver+ffnvcodec+adapter
+
+kernel <= 6.8
+nvidia-driver 470.161.03/470.239.06/520.56.06
+ffnvcodec 11.1.5.3
+nvidia-vaapi-driver 0.0.7
+
+

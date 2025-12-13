@@ -1,0 +1,90 @@
+# Case: using nouveau and integrated GPU on a hybrid laptop to deal with power state and suspend
+
+# Install mesa-vulkan-drivers/libvulkan_intel/libvulkan_radeon/mesa-vulkan-drivers
+# For libvulkan_intel.so or libvulkan_radeon.so
+
+# Remove nouveau_dri.so and libvulkan_nouveau.so
+# If openSUSE, remove Mesa-dri-nouveau and libvulkan_nouveau
+
+# Set DRI_PRIME to use integrated GPU explicitly
+# PCIe bus and ids could be found by: lspci -nn | grep VGA
+# ! means to use it only
+
+vi ~/.profile
+
+```
+export DRI_PRIME=8086:3e92!
+export MESA_VK_DEVICE_SELECT=8086:3e92!
+export VK_DRIVER_FILES=/usr/share/vulkan/icd.d/intel_icd.x86_64.json
+export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
+```
+
+# Optional
+
+```
+export MESA_LOADER_DRIVER_OVERRIDE=iris
+```
+
+# Disable DRI3 if needed
+
+```
+export LIBGL_DRI3_DISABLE=1
+export LIBVA_DRI3_DISABLE=1
+```
+
+# For GTK 4.0, try to use Vulkan globally
+
+vi ~/.profile
+
+```
+export GSK_RENDERER=vulkan
+export GDK_DISABLE=gl
+```
+
+# Check renderer128, cause renderD128 is not always integrated GPU if nouveau or nvidia is loaded
+
+cat /sys/class/drm/renderD128/device/vendor
+
+cat /sys/class/drm/renderD*/device/power_state
+
+# Blacklist then enable nouveau during boot to ensure renderD128 is integrated GPU
+
+# Blacklist nouveau or nvidia if renderD128 is not integrated GPU
+
+sudo vi /etc/modprobe.d/eipifun.conf
+
+```
+blacklist nouveau
+blacklist nvidia_uvm
+blacklist nvidia_modeset
+blacklist nvidia_drm
+blacklist nvidia
+```
+
+# Update initramfs
+
+sudo vi /etc/systemd/system/modprobe_load_nouveau.service
+
+```
+[Unit]
+Description=/usr/sbin/modprobe load nouveau
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=modprobe nouveau
+
+[Install]
+WantedBy=multi-user.target
+```
+
+sudo systemctl daemon-reload
+sudo systemctl enable modprobe_load_nouveau
+sudo systemctl start modprobe_load_nouveau
+systemctl status modprobe_load_nouveau
+
+
+# Try to use Vulkan for Chromium
+# Try to use Wayland for Chromium
+
+

@@ -1,0 +1,52 @@
+# Notice root set of GRUB if rescue mode
+
+# Modify GRUB2 defaults
+sudo vi /etc/default/grub
+# GRUB_TIMEOUT=-1
+# GRUB_DISABLE_OS_PROBER=false
+
+# Make GRUB2 configuration file
+
+sudo grub2-mkconfig  -o /boot/grub2/grub.cfg
+
+# Generate new UUID for partitions
+
+sudo e2fsck -f /dev/sda1
+sudo tune2fs -U random /dev/sda1
+
+# Modify fstab if boot partition UUID changes
+
+sudo blkid
+sudo vi /etc/fstab
+
+# Temporarily boot if MBR partition table changes
+
+ls
+set
+set root=hd0,msdos1
+set prefix=(hd0,msdos1)/boot/grub
+insmod normal
+normal
+
+# Install GRUB2 in rescue mode
+
+# May need to modify fstab
+# May need to rebuild initramfs
+# Install grub2 and make configuration files for grub2, for RedHat only, have to do "sudo dnf reinstall shim* grub2-efi* grub2-common" and make configuration files for grub2 instead.
+
+# Install GRUB2 in Live-CD
+
+sudo mkdir /mnt/temp
+for i in /boot /boot/efi /home /dev /dev/pts /proc /sys;do sudo mkdir /mnt/temp$i;done
+sudo mount /dev/sda1 /mnt/temp
+sudo mount /dev/sda2 /mnt/temp/boot
+sudo mount /dev/sda3 /mnt/temp/boot/efi
+sudo mount /dev/sda4 /mnt/temp/home
+for i in /dev /dev/pts /proc /sys;do sudo mount -B $i /mnt/temp$i;done
+sudo chroot /mnt/temp
+# May need to modify fstab
+# May need to rebuild initramfs
+# Install grub and make configuration files for grub, for RedHat only, have to do "sudo dnf reinstall shim* grub2*" instead.
+exit
+for i in /boot/efi /boot /home /dev/pts /dev /proc /sys / ;do sudo umount /mnt/temp$i;done
+reboot

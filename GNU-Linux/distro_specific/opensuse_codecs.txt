@@ -1,0 +1,10 @@
+# https://download.videolan.org/SuSE/
+
+# Google Chrome and VLC from VideoLAN has built-in codecs
+
+# Packman does not support Slowroll well
+
+sudo zypper install opi
+
+opi codecs
+
